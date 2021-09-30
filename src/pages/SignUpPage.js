@@ -1,16 +1,16 @@
 import React from 'react';
-import LoginForm from '../components/LoginForm';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import SignUpForm from '../components/SignUpForm';
 
-const LoginPage = () => {
+const SignUpPage = () => {
   return (
     <div>
       <Header/>
-      <LoginForm/>
+      <SignUpForm/>
       <Footer/>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
