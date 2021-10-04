@@ -1,0 +1,58 @@
+.headerDiv {
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  text-align: center;
+  position: fixed;
+  z-index: 10;
+}
+
+.logoIcon {
+  height: 40px;
+  width: 40px;
+  float: left;
+}
+
+.menuDiv {
+  display: none;
+  position: relative;
+  float: right;
+  transform: translateY(10%);
+}
+
+.menuDiv:hover {
+  display: block;
+}
+
+.menuIcon {
+  height: 28px;
+  width: 28px;
+  float: right;
+  transform: translateY(25%);
+}
+
+.menuIcon:hover {
+  cursor: pointer;
+}
+
+.menuIcon:hover + .menuDiv {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+  width: 80px;
+  padding: 5px 5px 5px 5px;
+}
+
+li:hover {
+  background-color: gray;
+}
+
+.headerComponents {
+  position: absolute;
+  top: 50%;
+}

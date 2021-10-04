@@ -1,9 +1,10 @@
 import React from 'react';
+import MainImg from '../assets/images/header.jpg';
 
 const Introduction = () => {
   return (
     <div>
-      소개페이지 입니다.
+      <img src={MainImg} style={{width:'100%'}}/>
     </div>
   );
 };

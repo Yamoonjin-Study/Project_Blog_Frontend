@@ -1,9 +1,10 @@
 import React from 'react';
+import '../../assets/css/footer.css';
 
 const Footer = () => {
   return (
-    <div>
-      푸터입니다.
+    <div className='footerDiv'>
+      <span style={{color:'white'}}>푸터입니다.</span>
     </div>
   );
 };
