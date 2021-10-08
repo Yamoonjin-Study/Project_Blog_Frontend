@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <Route path='/yamoonjin.com' exact={true} component={MainPage} />
-      <Route path='/yamoonjin.com/login' exact={true} component={LoginPage} />
+      <Route path='/yamoonjin.com/signin' exact={true} component={LoginPage} />
       <Route path='/yamoonjin.com/signup' exact={true} component={SignUpPage} />
       <Route path='/yamoonjin.com/mypage' exact={true} component={''} />
       <Route path='/yamoonjin.com/blog' exact={true} component={''} />

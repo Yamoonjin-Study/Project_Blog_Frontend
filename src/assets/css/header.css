@@ -12,30 +12,33 @@
   float: left;
 }
 
-.menuDiv {
-  display: none;
-  position: relative;
-  float: right;
-  transform: translateY(10%);
-}
-
-.menuDiv:hover {
-  display: block;
-}
-
 .menuIcon {
   height: 28px;
   width: 28px;
   float: right;
   transform: translateY(25%);
-}
-
-.menuIcon:hover {
   cursor: pointer;
 }
 
-.menuIcon:hover + .menuDiv {
-  display: block;
+.menuList {
+  opacity: 0;
+  position: relative;
+  float: right;
+  transform: translateY(10%);
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+
+.showMenu:hover {
+  opacity: 100%;
+  right: 0px;
+}
+
+.showMenu:hover + .menuList {
+  opacity: 100%;
+  right: 0px;
 }
 
 ul {
@@ -50,6 +53,21 @@ li {
 
 li:hover {
   background-color: gray;
+}
+
+li:hover > .listLink{
+  color: white;
+}
+
+.listLink{
+  font-weight:normal;
+  font-size:11pt;
+  text-decoration: none;
+  color: black;
+}
+
+.listLink:hover{
+  color:white;
 }
 
 .headerComponents {
