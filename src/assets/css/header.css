@@ -31,14 +31,8 @@
   transition-delay: 0s;
 }
 
-.showMenu:hover {
-  opacity: 100%;
-  right: 0px;
-}
-
-.showMenu:hover + .menuList {
-  opacity: 100%;
-  right: 0px;
+.showMenu:hover, .showMenu:hover + .menuList {
+  opacity: 80%;
 }
 
 ul {
@@ -49,10 +43,11 @@ li {
   display: inline-block;
   width: 80px;
   padding: 5px 5px 5px 5px;
+  transition: all 0.3s;
 }
 
 li:hover {
-  background-color: gray;
+  background-color: dimgray;
 }
 
 li:hover > .listLink{
