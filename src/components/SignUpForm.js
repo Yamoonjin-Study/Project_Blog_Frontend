@@ -31,15 +31,9 @@ const SignUpForm = (props) => {
       },
       body:JSON.stringify(signUp)
     })
-    .then(res => {
-      if(res.status === 201){
-        return res.json();
-      }else{
-        return null;
-      }
-    })
+    .then(res => res.json())
     .then(res=>{
-      if(res !== null){
+      if(res.responseMessage === "Signup Success"){
         alert("회원가입을 축하합니다.");
         props.history.push('/yamoonjin.com');
       }else{
@@ -55,9 +49,9 @@ const SignUpForm = (props) => {
           <h4 className='mainTitle'>SIGN UP</h4>
           <div className='divider'></div>
           <form className='signUpForm' onSubmit={submitSignUp}>
-            <label className='signUpInfo'>ENTER YOUR USERNAME</label>
+            <label className='signUpInfo'>ENTER YOUR EMAIL</label>
             <br />
-            <input id='username' name='username' type='text' className='signUpInput' onChange={onChangeValue}/>
+            <input id='email' name='email' type='email'className='signUpInput' onChange={onChangeValue}/>
             <div className='signUpUnderLine'></div>
             <br />
 
@@ -73,15 +67,15 @@ const SignUpForm = (props) => {
             <div className='signUpUnderLine'></div>
             <br />
 
-            <label className='signUpInfo'>ENTER YOUR NICKNAME</label>
+            <label className='signUpInfo'>ENTER YOUR USERNAME</label>
             <br />
-            <input id='nickname' name='nickname' type='text'className='signUpInput' onChange={onChangeValue}/>
+            <input id='username' name='username' type='text' className='signUpInput' onChange={onChangeValue}/>
             <div className='signUpUnderLine'></div>
             <br />
 
-            <label className='signUpInfo'>ENTER YOUR EMAIL</label>
+            <label className='signUpInfo'>ENTER YOUR NICKNAME</label>
             <br />
-            <input id='email' name='email' type='email'className='signUpInput' onChange={onChangeValue}/>
+            <input id='nickname' name='nickname' type='text'className='signUpInput' onChange={onChangeValue}/>
             <div className='signUpUnderLine'></div>
             <br />
 

@@ -31,8 +31,9 @@ const LoginForm = (props) => {
     .then(res=>{
       console.log(res.responseMessage);
       if(res.responseMessage !== "Login Fail"){
-        alert(res.username + " 님, 반갑습니다.");
-        props.history.push('/yamoonjin.com');
+        alert(res.user.username + " 님, 반갑습니다.");
+        sessionStorage.setItem("token", res.token);
+        window.location.replace("/yamoonjin.com");
       }else{
         alert("이메일, 비밀번호를 확인해주세요.");
       }
