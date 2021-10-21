@@ -28,6 +28,17 @@
   filter: invert(100%);
 }
 
+.userIcon {
+  float: right;
+  width: 23px;
+  margin: 18px 18px 0 -10px;
+  filter: invert(100%);
+}
+
+.mainNavi:hover .userIcon{
+  display: none;
+}
+
 .linkStyle {
   display: block;
   border-top: 1px solid gray;
@@ -37,6 +48,7 @@
   padding: 17px 0;
   text-decoration: none;
   font-size: 10pt;
+  transition: all 0.2s;
 }
 
 .linkStyle:hover {
@@ -54,11 +66,19 @@
 }
 
 .naviBtn {
+  margin-top: 20px;
   background: white;
   border: none;
   padding: 7px 25px;
   display:none;
   font-size: 10pt;
+  transition: all 0.2s;
+}
+
+.naviBtn:hover {
+  background: black;
+  color: white;
+  border: 1px solid white;
 }
 
 .mainNavi:hover .naviBtn{

@@ -3,6 +3,8 @@ import Bell from '../../assets/images/bell.png';
 import Blog from '../../assets/images/blog.png';
 import Chat from '../../assets/images/chat.png';
 import Logo from '../../assets/images/logo.png';
+import Portfolio from '../../assets/images/portfolio.png';
+import User from '../../assets/images/user.png';
 import { Link } from 'react-router-dom';
 import '../../assets/css/navigation.css'
 
@@ -33,14 +35,17 @@ const Navigation = () => {
       <Link to='/yamoonjin.com/blog' className='linkStyle'>
         BLOG<img src={Blog} className='naviIcon' alt='blog'/>
       </Link>
-      <br/>
+      <Link to='/yamoonjin.com/portfolio' className='linkStyle'>
+        PORTFOLIO<img src={Portfolio} className='naviIcon' alt='portfolio'/>
+      </Link>
       <button className='naviBtn' onClick={()=>(window.location.href='/yamoonjin.com/mypage')}>
         MYPAGE
       </button>
-      &nbsp;
+      &nbsp;&nbsp;&nbsp;
       <button className='naviBtn'onClick={LogOut}>
         LOGOUT
       </button>
+      <img src={User} className='userIcon' alt='user'/>
     </div>
   );
 };

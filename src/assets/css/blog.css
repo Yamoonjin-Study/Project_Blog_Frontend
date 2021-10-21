@@ -1,0 +1,22 @@
+.blogSection {
+  clear: both;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding-top: 50px;
+  text-align: center;
+}
+
+.blogSectionTitle {
+  text-align: left;
+}
+
+.blogSectionSubTitle {
+
+}
+
+.blogSectionContents {
+  text-align: left;
+  margin-left: 20px;
+  margin-bottom: 60px;
+}

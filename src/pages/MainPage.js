@@ -1,5 +1,5 @@
 import React from 'react';
-import Introduction from '../components/Introduction';
+import Introduction from '../components/Contents/Introduction';
 const MainPage = () => {
   return (
     <div>

@@ -1,12 +1,11 @@
 import React from 'react';
-import '../assets/css/main.css';
+import '../../assets/css/main.css';
 import { Link } from 'react-router-dom';
-import TypeWriter from '../assets/images/typewriter.jpg';
+import TypeWriter from '../../assets/images/typewriter.jpg';
 
 const Introduction = () => {
   return (
     <div className='mainPage'>
-
       <div className='section1'>
         <div className='section1Contents'>
           <h4 className='mainTitle'>OUR VISION</h4>
@@ -22,7 +21,7 @@ const Introduction = () => {
         <div className='leftSide subsectionContents' style={{width:'70%'}}>
           <span className='infoSpan'>We offer you a variety of functions<br/>to manage your Blog easily and effectively.</span>
         </div>
-        <div className='rightSide subsectionContents' style={{width:'30%'}}>
+        <div className='rightSide subsectionContents' style={{width:'30%', textAlign:'right'}}>
           <button className='btn1'>CHECK IT OUT</button>
         </div>
       </div>

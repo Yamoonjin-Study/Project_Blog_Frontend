@@ -43,7 +43,7 @@ li {
   display: inline-block;
   width: 80px;
   padding: 5px 5px 5px 5px;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 
 li:hover {

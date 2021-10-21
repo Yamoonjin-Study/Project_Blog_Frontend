@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
@@ -7,8 +7,11 @@ import IsLoginHeader from './components/Header/IsLoginHeader';
 import IsNotLoginHeader from './components/Header/IsNotLoginHeader';
 import Footer from './components/Footer/Footer';
 import Navigation from './components/Navigation/Navigation';
+import BlogPage from './pages/BlogPage';
+import BlogHeader from './components/Header/BlogHeader';
+import PortfolioPage from './pages/PortfolioPage';
 
-function App() {
+function App(props) {
 
   let IsLogin = "";
   const token = sessionStorage.getItem('token');
@@ -22,6 +25,12 @@ function App() {
     console.log("로그인 여부 : "+IsLogin);
   }else{
     header=(<IsLoginHeader/>);
+    if(props.location.pathname === '/yamoonjin.com/blog'){
+      header=(<BlogHeader/>);
+    }
+    if(props.location.pathname === '/yamoonjin.com/portfolio'){
+      header=(<BlogHeader/>);
+    }
     navigation=(<Navigation/>);
     console.log("token : "+token);
     fetch('http://localhost:8080/log-in/check', {
@@ -46,10 +55,11 @@ function App() {
       <Route path='/yamoonjin.com/signin' exact={true} component={LoginPage} />
       <Route path='/yamoonjin.com/signup' exact={true} component={SignUpPage} />
       <Route path='/yamoonjin.com/mypage' exact={true} component={''} />
-      <Route path='/yamoonjin.com/blog' exact={true} component={''} />
+      <Route path='/yamoonjin.com/blog' exact={true} component={BlogPage} />
+      <Route path='/yamoonjin.com/portfolio' exact={true} component={PortfolioPage} />
       <Footer />
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
