@@ -39,7 +39,7 @@ const Introduction = () => {
           <button className='btn1'>Resume</button> <button className='btn1'>Portfolio</button> <button className='btn1'>Business Card</button>
         </div>
         <div style={{float:'right', width:'50%',padding:'0 30px'}}>
-          <img src={TypeWriter} style={{width:'100%'}}/>
+          <img src={TypeWriter} style={{width:'100%'}} alt='type writer'/>
         </div>
       </div>
 
