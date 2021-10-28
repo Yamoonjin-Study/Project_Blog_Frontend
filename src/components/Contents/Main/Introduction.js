@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../assets/css/main.css';
+import '../../../assets/css/main.css';
 import { Link } from 'react-router-dom';
-import TypeWriter from '../../assets/images/typewriter.jpg';
+import TypeWriter from '../../../assets/images/typewriter.jpg';
 
 const Introduction = () => {
   return (

@@ -1,8 +1,12 @@
 import React from 'react';
+import PortfolioSearchForm from './ArchiveSearchForm';
 
 const Portfolio = () => {
+
+
   return (
     <div className='blogSection'>
+      <PortfolioSearchForm/>
       <div className='blogSectionTitle'>
         <h1>Hot Portfolio</h1>
         <hr />

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import '../../assets/css/main.css';
+import '../../../assets/css/main.css';
 import { Link } from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
 
-const LoginForm = (props) => {
+const LoginForm = () => {
 
   const [logIn, setLogIn] = useState({
     email:"",
@@ -32,8 +31,9 @@ const LoginForm = (props) => {
       console.log(res.responseMessage);
       if(res.responseMessage !== "Login Fail"){
         alert(res.user.nickname + " 님, 반갑습니다.");
+        sessionStorage.setItem("user_id", res.user.id);
         sessionStorage.setItem("token", res.token);
-        window.location.replace("/yamoonjin.com");
+        window.history.go(-1);
       }else{
         alert("이메일, 비밀번호를 확인해주세요.");
       }
@@ -67,4 +67,4 @@ const LoginForm = (props) => {
   );
 };
 
-export default withRouter(LoginForm);
+export default LoginForm;

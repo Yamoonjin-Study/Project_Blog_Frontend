@@ -9,41 +9,46 @@ import Footer from './components/Footer/Footer';
 import Navigation from './components/Navigation/Navigation';
 import BlogPage from './pages/BlogPage';
 import BlogHeader from './components/Header/BlogHeader';
-import PortfolioPage from './pages/PortfolioPage';
+import ArchivePage from './pages/ArchivePage';
+import MyPage from './pages/MyPage';
 
 function App(props) {
-
-  let IsLogin = "";
-  const token = sessionStorage.getItem('token');
+  console.log(
+    sessionStorage.getItem('user_id') + '/' + sessionStorage.getItem('token'));
+  let IsLogin;
   let header;
   let navigation;
 
-  if(token === null){
-    IsLogin="IsNotLogin";
-    header=(<IsNotLoginHeader/>);
+  if (sessionStorage.getItem('user_id') === null) {
+    IsLogin = false;
+    header = (<IsNotLoginHeader />);
     navigation = null;
-    console.log("로그인 여부 : "+IsLogin);
-  }else{
-    header=(<IsLoginHeader/>);
-    if(props.location.pathname === '/yamoonjin.com/blog'){
-      header=(<BlogHeader/>);
+  } else {
+    header = (<IsLoginHeader />);
+    if (props.location.pathname === '/yamoonjin.com/blog') {
+      header = (<BlogHeader />);
     }
-    if(props.location.pathname === '/yamoonjin.com/portfolio'){
-      header=(<BlogHeader/>);
+    if (props.location.pathname === '/yamoonjin.com/archive') {
+      header = (<BlogHeader />);
     }
-    navigation=(<Navigation/>);
-    console.log("token : "+token);
+    navigation = (<Navigation />);
+
     fetch('http://localhost:8080/log-in/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
+        'X-AUTH-TOKEN': sessionStorage.getItem('token'),
       },
-      body: JSON.stringify({"token" : token}),
+      body: JSON.stringify({ 'token': sessionStorage.getItem('token') }),
     })
     .then(res => res.json())
     .then(res => {
-      IsLogin = res.responseMessage;
-      console.log("로그인 여부 : "+IsLogin);
+      IsLogin = res.isLogin;
+      if (IsLogin === false) {
+        sessionStorage.removeItem('user_id');
+        sessionStorage.removeItem('token');
+      }
+      console.log('로그인 여부 : ' + IsLogin);
     });
   }
 
@@ -54,9 +59,10 @@ function App(props) {
       <Route path='/yamoonjin.com' exact={true} component={MainPage} />
       <Route path='/yamoonjin.com/signin' exact={true} component={LoginPage} />
       <Route path='/yamoonjin.com/signup' exact={true} component={SignUpPage} />
-      <Route path='/yamoonjin.com/mypage' exact={true} component={''} />
+      <Route path='/yamoonjin.com/mypage' exact={true} component={MyPage} />
       <Route path='/yamoonjin.com/blog' exact={true} component={BlogPage} />
-      <Route path='/yamoonjin.com/portfolio' exact={true} component={PortfolioPage} />
+      <Route path='/yamoonjin.com/archive' exact={true}
+             component={ArchivePage} />
       <Footer />
     </div>
   );

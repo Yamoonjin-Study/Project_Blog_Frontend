@@ -3,20 +3,27 @@ import Bell from '../../assets/images/bell.png';
 import Blog from '../../assets/images/blog.png';
 import Chat from '../../assets/images/chat.png';
 import Logo from '../../assets/images/logo.png';
-import Portfolio from '../../assets/images/portfolio.png';
+import Archive from '../../assets/images/archive.png';
 import User from '../../assets/images/user.png';
 import { Link } from 'react-router-dom';
 import '../../assets/css/navigation.css'
 
 const Navigation = () => {
 
-  const LogOut = () =>{
+  const token = sessionStorage.getItem('token');
+
+  const LogOut = (e) =>{
+    e.preventDefault();
     fetch("http://localhost:8080/log-out", {
-      method: "GET"
+      method: "GET",
+      headers:{
+        'X-AUTH-TOKEN' : token,
+      }
     })
     .then(res=>res.json())
     .then(res=>{
       sessionStorage.removeItem("token");
+      sessionStorage.removeItem("user_id");
       alert("로그아웃 되었습니다.");
       window.location.replace("/yamoonjin.com");
     });
@@ -35,8 +42,8 @@ const Navigation = () => {
       <Link to='/yamoonjin.com/blog' className='linkStyle'>
         BLOG<img src={Blog} className='naviIcon' alt='blog'/>
       </Link>
-      <Link to='/yamoonjin.com/portfolio' className='linkStyle'>
-        PORTFOLIO<img src={Portfolio} className='naviIcon' alt='portfolio'/>
+      <Link to='/yamoonjin.com/archive' className='linkStyle'>
+        ARCHIVE<img src={Archive} className='naviIcon' alt='portfolio'/>
       </Link>
       <button className='naviBtn' onClick={()=>(window.location.href='/yamoonjin.com/mypage')}>
         MYPAGE
