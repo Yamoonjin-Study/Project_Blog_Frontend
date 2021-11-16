@@ -5,7 +5,6 @@ const MyPage = () => {
   const user_id = sessionStorage.getItem('user_id');
   const token = sessionStorage.getItem('token');
 
-
   fetch("http://localhost:8080/userinfo/" + user_id, {
     method: 'GET',
     headers:{
@@ -21,7 +20,6 @@ const MyPage = () => {
 
   return (
     <div style={{height:'500px'}}>
-      <h2>{user_info}</h2>
     </div>
   );
 };

@@ -20,7 +20,7 @@ const BlogHeader = () => {
         alert('블로그를 생성해주세요.');
         window.location.replace('/yamoonjin.com/blog');
       } else {
-        window.location.replace('/yamoonjin.com/blog/' + res);
+        window.location.replace('/yamoonjin.com/blog/' + res.blogname);
       }
     });
   };

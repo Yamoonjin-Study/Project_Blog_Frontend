@@ -13,8 +13,6 @@ import ArchivePage from './pages/ArchivePage';
 import MyPage from './pages/MyPage';
 
 function App(props) {
-  console.log(
-    sessionStorage.getItem('user_id') + '/' + sessionStorage.getItem('token'));
   let IsLogin;
   let header;
   let navigation;
@@ -30,6 +28,9 @@ function App(props) {
     }
     if (props.location.pathname === '/yamoonjin.com/archive') {
       header = (<BlogHeader />);
+    }
+    if (props.location.pathname.indexOf('/yamoonjin.com/blog/') === 0) {
+      header = null;
     }
     navigation = (<Navigation />);
 
@@ -60,10 +61,15 @@ function App(props) {
       <Route path='/yamoonjin.com/signin' exact={true} component={LoginPage} />
       <Route path='/yamoonjin.com/signup' exact={true} component={SignUpPage} />
       <Route path='/yamoonjin.com/mypage' exact={true} component={MyPage} />
-      <Route path='/yamoonjin.com/blog' exact={true} component={BlogPage} />
+      <Route path='/yamoonjin.com/blog' component={BlogPage} />
+      <Route path='/yamoonjin.com/blogCreate' exact={true} component={BlogPage} />
       <Route path='/yamoonjin.com/archive' exact={true}
              component={ArchivePage} />
-      <Footer />
+      {
+        props.location.pathname.indexOf('/yamoonjin.com/blog') !== 0
+        ? <Footer />
+        : null
+      }
     </div>
   );
 }
