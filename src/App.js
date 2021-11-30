@@ -45,7 +45,7 @@ function App(props) {
     .then(res => res.json())
     .then(res => {
       IsLogin = res.isLogin;
-      if (IsLogin === false) {
+      if (IsLogin !== true) {
         sessionStorage.removeItem('user_id');
         sessionStorage.removeItem('token');
       }

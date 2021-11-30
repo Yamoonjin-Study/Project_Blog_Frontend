@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../../assets/css/showBlog.css';
+import LeftAlignedBlog from './LeftAlignedBlog';
+import RightAlignedBlog from './RightAlignedBlog';
 
 const ShowBlog = ({ match }) => {
 
@@ -13,7 +15,8 @@ const ShowBlog = ({ match }) => {
     create_date: '',
     status: '',
     logo_image: '',
-    design_form: '',
+    main_content: '',
+    menu_design: '',
     category: '',
   });
 
@@ -54,30 +57,15 @@ const ShowBlog = ({ match }) => {
   }, []);
 
   return (
-    <div className='showBlogSection'>
-      <img className='showBlogTitleImg' src={blog.logo_image} />
-      <div className='showBlogMenu'>
-        <h2><img src={blog.icon}/>{blog.name}</h2>
-        <h6>_{blog.category} 계정</h6>
-        <h6>DesignForm_{blog.design_form}</h6>
-        <button>Following</button><button>Follower</button><br/>
-        {
-          blogOwnerCheck === 'true'
-            ? <button>Management</button>
+    <div>
+    {
+      blog.menu_design === 0
+        ? <LeftAlignedBlog blog={blog} blogOwnerCheck={blogOwnerCheck} />
+        : (blog.menu_design === 2
+            ? <RightAlignedBlog blog={blog} blogOwnerCheck={blogOwnerCheck} />
             : null
-        }
-        <hr style={{width:'80%', margin:'15px 10% 15px 10%'}}/>
-        <div className='showBlogContentsMenu'>
-          <h6>> boards</h6>
-          <h6>> guest books</h6>
-        </div>
-      </div>
-      <div className='showBlogContent'>
-        <h4>명함 or 이력서 or 게시글 선택하여 띄울 수 있음.</h4>
-      </div>
-      <div className='showBlogContent'>
-        <h4>게시글 리스트</h4>
-      </div>
+        )
+    }
     </div>
   );
 };

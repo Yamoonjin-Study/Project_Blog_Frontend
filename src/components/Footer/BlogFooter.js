@@ -12,7 +12,8 @@ const BlogFooter = ({ match }) => {
     create_date: '',
     status: '',
     logo_image: '',
-    design_form: '',
+    main_content: '',
+    menu_design: '',
     category: '',
   });
 
@@ -35,7 +36,14 @@ const BlogFooter = ({ match }) => {
   }, []);
 
   return (
-    <div className='blogFooterDiv'>
+    <div className={
+      blog.menu_design === 0
+        ? 'blogFooterLeftDiv'
+        : (blog.menu_design === 2
+            ? 'blogFooterRightDiv'
+            : null
+        )
+    }>
       <span>
         <h2>{blog.name} 블로그 입니다.</h2>
         <h2>information : {blog.info}</h2>

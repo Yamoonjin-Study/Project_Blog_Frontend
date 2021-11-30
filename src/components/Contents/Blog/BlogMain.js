@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../assets/css/blog.css';
 import BlogSearchForm from './BlogSearchForm';
 
-const Blog = () => {
+const BlogMain = () => {
 
   return (
     <div className='blogSection'>
@@ -70,4 +70,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default BlogMain;

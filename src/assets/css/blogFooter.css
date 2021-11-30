@@ -1,5 +1,16 @@
-.blogFooterDiv {
+.blogFooterLeftDiv {
   margin-left: 355px;
+  text-align: center;
+  background-color: white;
+  height: 262px;
+  padding: 80px 0 80px 0;
+  position: relative;
+  bottom: 0;
+  border: 1px solid lightgray;
+}
+
+.blogFooterRightDiv {
+  margin-right: 300px;
   text-align: center;
   background-color: white;
   height: 262px;

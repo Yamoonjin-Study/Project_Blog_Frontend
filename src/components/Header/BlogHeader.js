@@ -18,7 +18,7 @@ const BlogHeader = () => {
       console.log(res);
       if (res.existence === false) {
         alert('블로그를 생성해주세요.');
-        window.location.replace('/yamoonjin.com/blog');
+        window.location.replace('/yamoonjin.com/blogCreate');
       } else {
         window.location.replace('/yamoonjin.com/blog/' + res.blogname);
       }
