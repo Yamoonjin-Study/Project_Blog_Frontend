@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../../assets/css/showBlog.css';
-import LeftAlignedBlog from './LeftAlignedBlog';
-import RightAlignedBlog from './RightAlignedBlog';
+import BlogDetail from './BlogDetail';
+import BlogSetting from './BlogSetting';
 
 const ShowBlog = ({ match }) => {
 
@@ -19,6 +19,16 @@ const ShowBlog = ({ match }) => {
     menu_design: '',
     category: '',
   });
+
+  const blogLeftDesign = {
+    section: 'showBlogLeftSection',
+    menu: 'showBlogLeftMenu'
+  };
+
+  const blogRightDesign = {
+    section: 'showBlogRightSection',
+    menu: 'showBlogRightMenu'
+  };
 
   //블로그의 주인인지 아닌지를 체크해줘야한다.
   useEffect(() => {
@@ -56,16 +66,30 @@ const ShowBlog = ({ match }) => {
     });
   }, []);
 
+  const goMain = () => {
+    window.location.href = '/yamoonjin.com/blog/' + blog.name;
+  };
+
   return (
     <div>
-    {
-      blog.menu_design === 0
-        ? <LeftAlignedBlog blog={blog} blogOwnerCheck={blogOwnerCheck} />
-        : (blog.menu_design === 2
-            ? <RightAlignedBlog blog={blog} blogOwnerCheck={blogOwnerCheck} />
-            : null
-        )
-    }
+      {
+        window.location.pathname === '/yamoonjin.com/blog/' + blogname
+        + '/settings'
+          ? (
+            blogOwnerCheck === 'true'
+              ? <BlogSetting blog={blog} blogOwnerCheck={blogOwnerCheck}
+                             goMain={goMain} />
+              : <h2>해당 url에 접근 권한이 없습니다.</h2>
+          )
+          : (
+            blog.menu_design === 0
+              ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogLeftDesign} goMain={goMain} />
+              : (blog.menu_design === 2
+                  ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogRightDesign} goMain={goMain} />
+                  : null
+              )
+          )
+      }
     </div>
   );
 };
