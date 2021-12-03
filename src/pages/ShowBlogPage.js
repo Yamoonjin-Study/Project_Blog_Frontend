@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import '../../../assets/css/showBlog.css';
-import BlogDetail from './BlogDetail';
-import BlogSetting from './BlogSetting';
+import '../assets/css/showBlog.css';
+import BlogSetting from '../components/Contents/Blog/BlogSetting';
+import BlogDetail from '../components/Contents/Blog/BlogDetail';
 
-const ShowBlog = ({ match }) => {
+const ShowBlogPage = ({ match }) => {
 
   const blogname = match.params.name;
   const [blogOwnerCheck, setBlogOwnerCheck] = useState('');
@@ -73,25 +73,29 @@ const ShowBlog = ({ match }) => {
   return (
     <div>
       {
-        window.location.pathname === '/yamoonjin.com/blog/' + blogname
-        + '/settings'
-          ? (
-            blogOwnerCheck === 'true'
-              ? <BlogSetting blog={blog} blogOwnerCheck={blogOwnerCheck}
-                             goMain={goMain} />
-              : <h2>해당 url에 접근 권한이 없습니다.</h2>
+        window.location.pathname.indexOf(
+          '/yamoonjin.com/blog/' + blogname + '/settings') === 0 &&
+        (
+          blogOwnerCheck === 'true'
+            ? <BlogSetting blog={blog} blogOwnerCheck={blogOwnerCheck}
+                           goMain={goMain} />
+            : <h2>해당 url에 접근 권한이 없습니다.</h2>
+        )
+      }
+      {
+        window.location.pathname.indexOf(
+          '/yamoonjin.com/blog/' + blogname) === 0 &&
+        (
+          blog.menu_design === 0
+          ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogLeftDesign} goMain={goMain} />
+          : (blog.menu_design === 2
+              ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogRightDesign} goMain={goMain} />
+              : null
           )
-          : (
-            blog.menu_design === 0
-              ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogLeftDesign} goMain={goMain} />
-              : (blog.menu_design === 2
-                  ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogRightDesign} goMain={goMain} />
-                  : null
-              )
-          )
+        )
       }
     </div>
   );
 };
 
-export default ShowBlog;
+export default ShowBlogPage;

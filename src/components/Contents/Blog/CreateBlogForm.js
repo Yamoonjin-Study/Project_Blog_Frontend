@@ -99,7 +99,7 @@ const CreateBlogForm = (props) => {
             <br />
             <select id='main_content' name='main_content' className='settingSelect' onChange={onChangeValue}>
               <option value="none">=== 선택 ===</option>
-              <option value='0'>None</option>
+              <option value='0'>Your Board List</option>
               <option value='1'>Your Business Card</option>
               <option value='2'>Your Profile</option>
               <option value='3'>Your Board</option>

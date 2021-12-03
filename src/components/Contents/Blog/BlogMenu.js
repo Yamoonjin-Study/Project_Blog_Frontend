@@ -6,7 +6,7 @@ const BlogMenu = ({blog, blogOwnerCheck, goMain}) => {
     <div>
       <h2><img className='iconImage' src={blog.icon} onClick={goMain} alt='icon'/>{blog.name}</h2>
       <h6>_{blog.category} 계정</h6>
-      <h6>DesignForm_{blog.design_form}</h6>
+      <h6>DesignForm_</h6>
       <button>Following</button>
       <button>Follower</button>
       <br />
@@ -19,7 +19,7 @@ const BlogMenu = ({blog, blogOwnerCheck, goMain}) => {
       }
       <hr style={{ width: '80%', margin: '15px 10% 15px 10%' }} />
       <div className='showBlogContentsMenu'>
-        <h6>> boards</h6>
+        <Link to ={'/yamoonjin.com/blog/' + blog.name + '/board'}><h6>> boards</h6></Link>
         <h6>> guest books</h6>
       </div>
     </div>
