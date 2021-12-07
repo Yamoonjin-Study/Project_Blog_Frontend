@@ -62,6 +62,9 @@ const ShowBlogPage = ({ match }) => {
         alert('블로그를 조회할 수 없습니다. 관리자에게 문의해 주세요.');
       } else {
         setBlog(res.blog);
+        if(blog.menu_design === 0){
+
+        }
       }
     });
   }, []);
@@ -74,25 +77,26 @@ const ShowBlogPage = ({ match }) => {
     <div>
       {
         window.location.pathname.indexOf(
-          '/yamoonjin.com/blog/' + blogname + '/settings') === 0 &&
+          '/yamoonjin.com/blog/' + blogname + '/settings') === 0
+          ?
         (
           blogOwnerCheck === 'true'
             ? <BlogSetting blog={blog} blogOwnerCheck={blogOwnerCheck}
                            goMain={goMain} />
             : <h2>해당 url에 접근 권한이 없습니다.</h2>
         )
-      }
-      {
-        window.location.pathname.indexOf(
-          '/yamoonjin.com/blog/' + blogname) === 0 &&
-        (
-          blog.menu_design === 0
-          ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogLeftDesign} goMain={goMain} />
-          : (blog.menu_design === 2
-              ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogRightDesign} goMain={goMain} />
-              : null
+          :(
+            window.location.pathname.indexOf(
+              '/yamoonjin.com/blog/' + blogname) === 0 &&
+            (
+              blog.menu_design === 0
+                ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogLeftDesign} goMain={goMain} />
+                : (blog.menu_design === 2
+                    ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogRightDesign} goMain={goMain} />
+                    : null
+                )
+            )
           )
-        )
       }
     </div>
   );

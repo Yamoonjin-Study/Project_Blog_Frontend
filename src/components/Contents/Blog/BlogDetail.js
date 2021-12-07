@@ -14,7 +14,7 @@ const BlogDetail = ({ blog, blogOwnerCheck, goMain, blogDesign }) => {
       </div>
       {
         window.location.pathname.indexOf('/yamoonjin.com/blog/'+blog.name+'/board') === 0
-        ?<BoardPage />
+        ?<BoardPage blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogDesign} goMain={goMain} />
         :(
             blog.main_content === 0
               ? <div className='showBlogContent'><h4>게시글 리스트</h4></div>

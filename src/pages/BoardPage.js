@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import BoardMain from '../components/Contents/Board/BoardMain';
 import BoardWrite from '../components/Contents/Board/BoardWrite';
 import BoardUpdate from '../components/Contents/Board/BoardUpdate';
+import { Route } from 'react-router-dom';
 
-const BoardPage = () => {
+const BoardPage = ({ blog, blogOwnerCheck, goMain, blogDesign }) => {
 
   const [boardList, setBoardList] = useState([]);
 
@@ -23,9 +24,9 @@ const BoardPage = () => {
 
   return (
     <div className='showBlogContent'>
-      <BoardMain boardList={boardList}/>
-      <BoardWrite />
-      <BoardUpdate />
+      <Route path={'/yamoonjin.com/blog/'+blog.name+'/board'} exact={true}><BoardMain boardList={boardList}/></Route>
+      <Route path={'/yamoonjin.com/blog/'+blog.name+'/board/write'} exact={true}><BoardWrite blog={blog}/></Route>
+      <Route path={'/yamoonjin.com/blog/'+blog.name+'/board/update/:id'} ><BoardUpdate /></Route>
     </div>
   );
 };
