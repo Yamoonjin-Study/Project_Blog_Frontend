@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import '../assets/css/showBlog.css';
 import BlogSetting from '../components/Contents/Blog/BlogSetting';
 import BlogDetail from '../components/Contents/Blog/BlogDetail';
+import GuestBooks from '../components/Contents/GuestBook/GuestBooks';
+import BlogFooter from '../components/Footer/BlogFooter';
+import { Route } from 'react-router-dom';
 
 const ShowBlogPage = ({ match }) => {
 
@@ -20,14 +23,19 @@ const ShowBlogPage = ({ match }) => {
     category: '',
   });
 
+  const [blogDesign, setBlogDesign] = useState({
+    section: '',
+    menu: '',
+  });
+
   const blogLeftDesign = {
     section: 'showBlogLeftSection',
-    menu: 'showBlogLeftMenu'
+    menu: 'showBlogLeftMenu',
   };
 
   const blogRightDesign = {
     section: 'showBlogRightSection',
-    menu: 'showBlogRightMenu'
+    menu: 'showBlogRightMenu',
   };
 
   //블로그의 주인인지 아닌지를 체크해줘야한다.
@@ -62,9 +70,6 @@ const ShowBlogPage = ({ match }) => {
         alert('블로그를 조회할 수 없습니다. 관리자에게 문의해 주세요.');
       } else {
         setBlog(res.blog);
-        if(blog.menu_design === 0){
-
-        }
       }
     });
   }, []);
@@ -73,31 +78,35 @@ const ShowBlogPage = ({ match }) => {
     window.location.href = '/yamoonjin.com/blog/' + blog.name;
   };
 
+  useEffect(() => {
+    if (blog.menu_design === 0) {
+      setBlogDesign(blogLeftDesign);
+    } else if (blog.menu_design === 2) {
+      setBlogDesign(blogRightDesign);
+    }
+  }, [blog]);
+
   return (
     <div>
-      {
-        window.location.pathname.indexOf(
-          '/yamoonjin.com/blog/' + blogname + '/settings') === 0
-          ?
-        (
+      <Route path={'/yamoonjin.com/blog/' + blogname}>
+        <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck}
+                    blogDesign={blogDesign} goMain={goMain} />
+      </Route>
+
+      <Route path={'/yamoonjin.com/blog/' + blogname + '/guestbook'}>
+        <GuestBooks blogOwnerCheck={blogOwnerCheck} />
+      </Route>
+
+      <Route path={'/yamoonjin.com/blog/' + blogname + '/settings'}>
+        {
           blogOwnerCheck === 'true'
             ? <BlogSetting blog={blog} blogOwnerCheck={blogOwnerCheck}
-                           goMain={goMain} />
+                           goMain={goMain} blogDesign={blogDesign} />
             : <h2>해당 url에 접근 권한이 없습니다.</h2>
-        )
-          :(
-            window.location.pathname.indexOf(
-              '/yamoonjin.com/blog/' + blogname) === 0 &&
-            (
-              blog.menu_design === 0
-                ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogLeftDesign} goMain={goMain} />
-                : (blog.menu_design === 2
-                    ? <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogRightDesign} goMain={goMain} />
-                    : null
-                )
-            )
-          )
-      }
+        }
+      </Route>
+
+      <BlogFooter blog={blog} />
     </div>
   );
 };

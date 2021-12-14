@@ -4,18 +4,18 @@ import BlogMenu from './BlogMenu';
 import BoardPage from '../../../pages/BoardPage';
 
 const BlogDetail = ({ blog, blogOwnerCheck, goMain, blogDesign }) => {
-
   return (
     <div className={blogDesign.section}>
       <img className='showBlogTitleImg' src={blog.logo_image}
-           onClick={goMain} alt='logo'/>
+           onClick={goMain} alt='logo' />
       <div className={blogDesign.menu}>
-        <BlogMenu blog={blog} blogOwnerCheck={blogOwnerCheck} goMain={goMain}/>
+        <BlogMenu blog={blog} blogOwnerCheck={blogOwnerCheck} goMain={goMain} />
       </div>
       {
-        window.location.pathname.indexOf('/yamoonjin.com/blog/'+blog.name+'/board') === 0
-        ?<BoardPage blog={blog} blogOwnerCheck={blogOwnerCheck} blogDesign={blogDesign} goMain={goMain} />
-        :(
+        window.location.pathname.indexOf(
+          '/yamoonjin.com/blog/' + blog.name + '/board') === 0
+          ? <BoardPage />
+          : (
             blog.main_content === 0
               ? <div className='showBlogContent'><h4>게시글 리스트</h4></div>
               : (blog.main_content === 1
@@ -26,7 +26,7 @@ const BlogDetail = ({ blog, blogOwnerCheck, goMain, blogDesign }) => {
                   )
               )
           )
-        }
+      }
     </div>
   );
 };

@@ -1,0 +1,26 @@
+.boardList {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  border: 1px solid lightgray;
+  margin: 15px 15px;
+  overflow: hidden;
+}
+
+.boardContent {
+  height: 300px;
+  width: 300px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.boardDetail {
+
+}
+
+.replyList{
+  width:100%;
+  text-align: left;
+  padding: 10px 30px;
+}

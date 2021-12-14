@@ -1,35 +1,26 @@
-import React, { useEffect, useState } from 'react';
-
-// imports for summernote
+import React from 'react';
 import ReactSummernote from 'react-summernote';
 import 'react-summernote/dist/react-summernote.css';
 import 'react-summernote/lang/summernote-ko-KR';
-import 'bootstrap/js//modal';
-import 'bootstrap/js//dropdown';
-import 'bootstrap/js//tooltip';
+import 'bootstrap/js/modal';
+import 'bootstrap/js/dropdown';
+import 'bootstrap/js/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
+import $ from 'jquery';
 
 const BoardUpdate = ({ match }) => {
-  // console.log(match.params.id);
-  const [board, setBoard] = useState({
-    board:{}
-  });
-  useEffect(() => {
-    fetch('http://localhost:8080/show-board/' + 1,{
-      method: 'GET',
-      headers: {
-        'X-AUTH-TOKEN': sessionStorage.getItem('token'),
-      },
-    })
-    .then(res => res.json())
-    .then(res => {
-      setBoard(res);
-      console.log(board.board);
-    });
-  }, []);
 
-  const onChange = (content) => {
-    console.log('onChange ', content);
+  const blogname = match.params.name;
+  const board_id = match.params.id;
+
+  let boardWrite = {
+    title: '',
+    content: '',
+    category: null,
+  };
+
+  const onContentChange = (content) => {
+    $('input[name=\'content\']').val(content);
   };
 
   const onImageUpload = (images, insertImage) => {
@@ -43,27 +34,65 @@ const BoardUpdate = ({ match }) => {
       reader.readAsDataURL(images[i]);
     }
   };
+
+  const goBoard = () => {
+    window.location.href = '/yamoonjin.com/blog/' + blogname + '/board';
+  };
+
+  const submitBoard = (e) => {
+    e.preventDefault();
+    boardWrite = {
+      title: $('input[name=\'title\']').val(),
+      content: $('input[name=\'content\']').val(),
+      category: null,
+    };
+    fetch('http://localhost:8080/write-board', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'X-AUTH-TOKEN': sessionStorage.getItem('token'),
+      },
+      body: JSON.stringify(boardWrite),
+    })
+    .then(res => res)
+    .then(res => {
+      alert('글을 작성하였습니다.');
+      window.location.href = '/yamoonjin.com/blog/' + blogname + '/board';
+    });
+  };
   return (
     <div className='container'>
+      제목 : <input type='text' name='title' />
+      <input type='text' name='content' style={{ display: 'none' }} />
       <ReactSummernote
-        value="글을 작성해 주세요."
+        value='내용을 입력하여주세요'
         options={{
           lang: 'ko-KR',
-          height: 380,
+          height: 500,
           dialogsInBody: true,
           toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
+            // [groupName, [list of button]]
             ['fontname', ['fontname']],
-            ['para', ['ul', 'ol', 'paragraph']],
+            ['fontsize', ['fontsize']],
+            ['style',
+              ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+            ['color', ['forecolor', 'color']],
             ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['insert', ['picture', 'link', 'video']],
+            ['view', ['fullscreen', 'help']],
           ],
+          fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
+            '맑은 고딕', '궁서', '굴림체', '굴림', '돋움체', '바탕체'],
+          fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22',
+            '24', '28', '30', '36', '50', '72'],
         }}
-        onChange={onChange}
+        onChange={onContentChange}
         onImageUpload={onImageUpload}
       />
+      <button className='btn2 btnHover' onClick={submitBoard}>작성하기</button>
+      <button className='btn2 btnHover' onClick={goBoard}>취소</button>
     </div>
   );
 };

@@ -1,39 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../../assets/css/blogFooter.css';
 
-const BlogFooter = ({ match }) => {
-
-  const blogname = match.params.name;
-  const [blog, setBlog] = useState({
-    id: '',
-    name: '',
-    info: '',
-    icon: '',
-    create_date: '',
-    status: '',
-    logo_image: '',
-    main_content: '',
-    menu_design: '',
-    category: '',
-  });
-
-  useEffect(() => {
-    //블로그 호출
-    fetch('http://localhost:8080/blog/' + blogname, {
-      method: 'GET',
-      headers: {
-        'X-AUTH-TOKEN': sessionStorage.getItem('token'),
-      },
-    })
-    .then(res => res.json())
-    .then(res => {
-      if (res.responseMessage === 'No Result') {
-        alert('블로그를 조회할 수 없습니다. 관리자에게 문의해 주세요.');
-      } else {
-        setBlog(res.blog);
-      }
-    });
-  }, []);
+const BlogFooter = ({ blog }) => {
 
   return (
     <div className={
