@@ -8,9 +8,9 @@ import IsNotLoginHeader from './components/Header/IsNotLoginHeader';
 import Footer from './components/Footer/Footer';
 import Navigation from './components/Navigation/Navigation';
 import BlogPage from './pages/BlogPage';
-import BlogHeader from './components/Header/BlogHeader';
-import ArchivePage from './pages/ArchivePage';
 import MyPage from './pages/MyPage';
+import CreateBlogForm from './components/Contents/Blog/CreateBlogForm';
+import ArchiveMain from './components/Contents/Archive/ArchiveMain';
 
 function App(props) {
   let IsLogin;
@@ -23,12 +23,6 @@ function App(props) {
     navigation = null;
   } else {
     header = (<IsLoginHeader />);
-    if (props.location.pathname === '/yamoonjin.com/blog') {
-      header = (<BlogHeader />);
-    }
-    if (props.location.pathname === '/yamoonjin.com/archive') {
-      header = (<BlogHeader />);
-    }
     if (props.location.pathname.indexOf('/yamoonjin.com/blog/') === 0) {
       header = null;
     }
@@ -62,9 +56,8 @@ function App(props) {
       <Route path='/yamoonjin.com/signup' exact={true} component={SignUpPage} />
       <Route path='/yamoonjin.com/mypage' exact={true} component={MyPage} />
       <Route path='/yamoonjin.com/blog' component={BlogPage} />
-      <Route path='/yamoonjin.com/blogCreate' exact={true} component={BlogPage} />
-      <Route path='/yamoonjin.com/archive' exact={true}
-             component={ArchivePage} />
+      <Route path='/yamoonjin.com/blogCreate' exact={true} component={CreateBlogForm} />
+      <Route path='/yamoonjin.com/archive' exact={true} component={ArchiveMain} />
       {
         props.location.pathname.indexOf('/yamoonjin.com/blog') !== 0
         ? <Footer />

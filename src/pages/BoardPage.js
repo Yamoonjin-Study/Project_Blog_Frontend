@@ -24,9 +24,9 @@ const BoardPage = () => {
 
   return (
     <div className='showBlogContent'>
-      <Route path={'/yamoonjin.com/blog/'+blog_name+'/board'} exact={true} ><BoardMain boardList={boardList}/></Route>
-      <Route path={'/yamoonjin.com/blog/'+blog_name+'/board/:board_id'} exact={true} component={BoardDetail}></Route>
-      <Route path={'/yamoonjin.com/blog/'+blog_name+'/board-write'} exact={true} component={BoardWrite}></Route>
+      <Route path={'/yamoonjin.com/blog/'+blog_name+'/board/list'} exact={true} ><BoardMain boardList={boardList}/></Route>
+      <Route path={'/yamoonjin.com/blog/'+blog_name+'/board/list/:board_id'} exact={true} component={BoardDetail}></Route>
+      <Route path={'/yamoonjin.com/blog/'+blog_name+'/board/write'} exact={true} component={BoardWrite}></Route>
       <Route path={'/yamoonjin.com/blog/'+blog_name+'/board/update/:id'} exact={true}><BoardUpdate /></Route>
     </div>
   );

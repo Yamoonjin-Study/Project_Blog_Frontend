@@ -93,11 +93,11 @@ const ShowBlogPage = ({ match }) => {
                     blogDesign={blogDesign} goMain={goMain} />
       </Route>
 
-      <Route path={'/yamoonjin.com/blog/' + blogname + '/guestbook'}>
+      <Route path={'/yamoonjin.com/blog/' + blogname + '/guestbook'} exact={true}>
         <GuestBooks blogOwnerCheck={blogOwnerCheck} />
       </Route>
 
-      <Route path={'/yamoonjin.com/blog/' + blogname + '/settings'}>
+      <Route path={'/yamoonjin.com/blog/' + blogname + '/settings'} exact={true}>
         {
           blogOwnerCheck === 'true'
             ? <BlogSetting blog={blog} blogOwnerCheck={blogOwnerCheck}

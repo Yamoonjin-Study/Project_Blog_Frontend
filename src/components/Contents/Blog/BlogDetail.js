@@ -2,6 +2,8 @@ import React from 'react';
 import '../../../assets/css/showBlog.css';
 import BlogMenu from './BlogMenu';
 import BoardPage from '../../../pages/BoardPage';
+import ArchivePage from '../../../pages/ArchivePage';
+import { Route } from 'react-router-dom';
 
 const BlogDetail = ({ blog, blogOwnerCheck, goMain, blogDesign }) => {
   return (
@@ -11,22 +13,22 @@ const BlogDetail = ({ blog, blogOwnerCheck, goMain, blogDesign }) => {
       <div className={blogDesign.menu}>
         <BlogMenu blog={blog} blogOwnerCheck={blogOwnerCheck} goMain={goMain} />
       </div>
-      {
-        window.location.pathname.indexOf(
-          '/yamoonjin.com/blog/' + blog.name + '/board') === 0
-          ? <BoardPage />
-          : (
-            blog.main_content === 0
-              ? <div className='showBlogContent'><h4>게시글 리스트</h4></div>
-              : (blog.main_content === 1
-                  ? <div className='showBlogContent'><h2>Business Card</h2></div>
-                  : (blog.main_content === 2
-                      ? <div className='showBlogContent'><h2>Profile</h2></div>
-                      : <div className='showBlogContent'><h2>Board</h2></div>
-                  )
-              )
-          )
-      }
+      <Route path={'/yamoonjin.com/blog/' + blog.name} exact={true}>
+        {
+          blog.main_content === 0 &&
+          <h4>BoardList</h4>
+        }
+        {
+          blog.main_content === 1 &&
+          <h4>Business Card</h4>
+        }
+        {
+          blog.main_content === 2 &&
+          <h4>Profile</h4>
+        }
+      </Route>
+      <Route path={'/yamoonjin.com/blog/' + blog.name + '/board'}><BoardPage /></Route>
+      <Route path={'/yamoonjin.com/blog/' + blog.name + '/archive'}><ArchivePage /></Route>
     </div>
   );
 };

@@ -86,6 +86,7 @@ const CreateBlogForm = (props) => {
 
             <label className='signUpInfo'>BLOG CATEGORY&nbsp;&nbsp;&nbsp;&nbsp;<i className='signUpExample'>Personal Blog or Business Blog</i></label>
             <br />
+            <br />
             <select id='category' name='category' className='settingSelect' onChange={onChangeValue}>
               <option value="none">=== 선택 ===</option>
               <option value='PERSONAL'>PERSONAL</option>
@@ -96,6 +97,7 @@ const CreateBlogForm = (props) => {
 
             <label className='signUpInfo'>BLOG MAIN SCREEN CONTENT&nbsp;&nbsp;&nbsp;&nbsp;
               <i className='signUpExample'>If the content does not exist, a blank space appears on the main screen.</i></label>
+            <br />
             <br />
             <select id='main_content' name='main_content' className='settingSelect' onChange={onChangeValue}>
               <option value="none">=== 선택 ===</option>
@@ -109,6 +111,7 @@ const CreateBlogForm = (props) => {
 
             <label className='signUpInfo'>BLOG MENU DESIGN&nbsp;&nbsp;&nbsp;&nbsp;
               <i className='signUpExample'>Set the position of the menu.</i></label>
+            <br />
             <br />
             <select id='menu_design' name='menu_design' className='settingSelect' onChange={onChangeValue}>
               <option value="none">=== 선택 ===</option>

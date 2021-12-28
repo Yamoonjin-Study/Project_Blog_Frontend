@@ -1,12 +1,16 @@
 import React from 'react';
-import Portfolio from '../components/Contents/Archive/Archive';
+import { Route } from 'react-router-dom';
+import ArchiveList from '../components/Contents/Archive/ArchiveList';
+import UploadArchiveForm from '../components/Contents/Archive/UploadArchiveForm';
 
-const PortfolioPage = () => {
+const ArchivePage = () => {
+  const blog_name = window.location.pathname.split('/').at(3);
   return (
-    <div>
-      <Portfolio/>
+    <div className='showBlogContent'>
+      <Route path={'/yamoonjin.com/blog/'+blog_name+'/archive/list'} exact={true} component={ArchiveList}></Route>
+      <Route path={'/yamoonjin.com/blog/'+blog_name+'/archive/upload'} exact={true} component={UploadArchiveForm}></Route>
     </div>
   );
 };
 
-export default PortfolioPage;
+export default ArchivePage;

@@ -16,6 +16,7 @@ const MyPage = () => {
   })
   .then(res => {
     user_info = JSON.stringify(res);
+    console.log(user_info);
   });
 
   return (

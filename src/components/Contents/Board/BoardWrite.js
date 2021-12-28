@@ -56,7 +56,7 @@ const BoardWrite = () => {
     .then(res => res)
     .then(res => {
       alert('글을 작성하였습니다.');
-      window.location.href = '/yamoonjin.com/blog/' + blog_name + '/board';
+      window.location.href = '/yamoonjin.com/blog/' + blog_name + '/board/list';
     });
   };
   return (

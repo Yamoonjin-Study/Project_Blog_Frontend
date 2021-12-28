@@ -47,34 +47,36 @@ const BoardDetail = ({ match }) => {
   const [reply, setReply] = useState({
     top_board_id: '',
     top_reply_id: '',
-    content:'',
-  })
+    content: '',
+  });
 
   const onChangeReply = (e) => {
     e.preventDefault();
     setReply({
       top_board_id: board.id,
       top_reply_id: null,
-      [e.target.name] : e.target.value
+      [e.target.name]: e.target.value,
     });
-  }
+  };
 
-  const SubmitReply = () =>{
+  const SubmitReply = (e) => {
+    e.preventDefault();
     fetch('http://localhost:8080/write-reply', {
       method: 'POST',
       headers: {
         'X-AUTH-TOKEN': sessionStorage.getItem('token'),
         'Content-Type': 'application/json; charset=utf-8',
       },
-      body: JSON.stringify(reply)
+      body: JSON.stringify(reply),
     }).then(res => res.json())
-    .then(res=>res);
+    .then();
     alert('댓글작성이 완료되었습니다.');
-  }
+    window.location.reload();
+  };
 
   return (
     <div>
-      <h1>{board.title}</h1><br/>
+      <h1>{board.title}</h1><br />
       <h6>작성일 : {dateFormat(create_date)}</h6>
       <div className='divider'></div>
       <div className='boardDetail'>
@@ -93,7 +95,11 @@ const BoardDetail = ({ match }) => {
       }
       <div className='divider'></div>
       <form>
-        댓글 : <textarea name='content' style={{width:'80%', height:'100px', verticalAlign:'middle'}} onChange={onChangeReply}/>
+        댓글 : <textarea name='content' style={{
+        width: '80%',
+        height: '100px',
+        verticalAlign: 'middle',
+      }} onChange={onChangeReply} />
         <button onClick={SubmitReply}>댓글달기</button>
       </form>
       <br />

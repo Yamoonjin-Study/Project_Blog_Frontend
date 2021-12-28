@@ -1,0 +1,21 @@
+.pdfPreviewer {
+  display: inline-block;
+  box-shadow: 20px 20px 20px grey;
+}
+
+.pdfPreviewerNavi {
+  box-shadow: 20px 20px 20px grey;
+  opacity: 0;
+  background-color: white;
+  padding: 10px 20px;
+  position: absolute;
+  left: 50%;
+  transform:translateX(-50%);
+  margin-top: -120px;
+  margin-left: 177px;
+}
+
+.pdfPreviewer:hover > .pdfPreviewerNavi {
+  opacity: 100%;
+  transition: 0.3s;
+}

@@ -1,8 +1,7 @@
 import React from 'react';
 import PortfolioSearchForm from './ArchiveSearchForm';
 
-const Portfolio = () => {
-
+const ArchiveMain = () => {
 
   return (
     <div className='blogSection'>
@@ -119,4 +118,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default ArchiveMain;

@@ -13,11 +13,11 @@ const IsLoginHeader = () => {
           <Link to='/yamoonjin.com' className='listLink'>
             <li>Home</li>
           </Link>
-          <Link to='/yamoonjin.com/about' className='listLink'>
-            <li>About</li>
+          <Link to='/yamoonjin.com/blog' className='listLink'>
+            <li>Blogs</li>
           </Link>
-          <Link to='/yamoonjin.com/contact' className='listLink'>
-            <li>Contact</li>
+          <Link to='/yamoonjin.com/archive' className='listLink'>
+            <li>Archives</li>
           </Link>
         </ul>
       </div>

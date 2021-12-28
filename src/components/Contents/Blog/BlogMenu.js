@@ -19,10 +19,15 @@ const BlogMenu = ({blog, blogOwnerCheck, goMain}) => {
       }
       <hr style={{ width: '80%', margin: '15px 10% 15px 10%' }} />
       <div className='showBlogContentsMenu'>
-        <Link to ={'/yamoonjin.com/blog/' + blog.name + '/board'}><h6>> boards</h6></Link>
+        <Link to ={'/yamoonjin.com/blog/' + blog.name + '/board/list'}><h6>> board list</h6></Link>
         {
           blogOwnerCheck === 'true' &&
-          <Link to ={'/yamoonjin.com/blog/' + blog.name + '/board-write'}><h6>> write board</h6></Link>
+          <Link to ={'/yamoonjin.com/blog/' + blog.name + '/board/write'}><h6>> write board</h6></Link>
+        }
+        <Link to ={'/yamoonjin.com/blog/' + blog.name + '/archive/list'}><h6>> archive list</h6></Link>
+        {
+          blogOwnerCheck === 'true' &&
+          <Link to ={'/yamoonjin.com/blog/' + blog.name + '/archive/upload'}><h6>> upload archive</h6></Link>
         }
         <Link to ={'/yamoonjin.com/blog/' + blog.name + '/guestbook'}><h6>> guest books</h6></Link>
       </div>

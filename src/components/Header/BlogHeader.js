@@ -5,26 +5,6 @@ import '../../assets/css/header.css';
 
 const BlogHeader = () => {
 
-  const onClickMyBlog = (e) => {
-    e.preventDefault();
-    fetch('http://localhost:8080/blog/myBlog', {
-      method: 'GET',
-      headers:{
-        'X-AUTH-TOKEN' : sessionStorage.getItem('token'),
-      }
-    })
-    .then(res => res.json())
-    .then(res => {
-      console.log(res);
-      if (res.existence === false) {
-        alert('블로그를 생성해주세요.');
-        window.location.replace('/yamoonjin.com/blogCreate');
-      } else {
-        window.location.replace('/yamoonjin.com/blog/' + res.blogname);
-      }
-    });
-  };
-
   return (
     <div className='headerDiv'>
       <img src={MenuIcon} className='menuIcon showMenu' alt='logo' />

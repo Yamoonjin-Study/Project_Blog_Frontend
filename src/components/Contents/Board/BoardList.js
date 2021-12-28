@@ -29,14 +29,13 @@ const BoardList = (boards) => {
   }
 
   return (
-    <Link to={'/yamoonjin.com/blog/' + blog_name + '/board/' + board.id}>
+    <Link to={'/yamoonjin.com/blog/' + blog_name + '/board/list/' + board.id}>
       <div className='boardList'>
         <div className='boardContent'>
-          <h6>title : {board.title}</h6>
-          <h6>content :</h6> <p
-          dangerouslySetInnerHTML={{ __html: convertedContent }}></p>
-          <h6>createDate : {board.createDate.split('T').at(0)}</h6>
-          <h6>category : {board.category}</h6>
+          <h5>{board.title}</h5>
+          <p dangerouslySetInnerHTML={{ __html: convertedContent }}></p>
+          <h6>{board.createDate.split('T').at(0)}</h6>
+          <h6>{board.category}</h6>
           <h6>count : {board.count}</h6>
         </div>
       </div>

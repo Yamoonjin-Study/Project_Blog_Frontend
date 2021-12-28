@@ -12,6 +12,46 @@ const Navigation = () => {
 
   const token = sessionStorage.getItem('token');
 
+  const onClickMyBlog = (e) => {
+    e.preventDefault();
+    fetch('http://localhost:8080/blog/myBlog', {
+      method: 'GET',
+      headers:{
+        'X-AUTH-TOKEN' : sessionStorage.getItem('token'),
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      if (res.existence === false) {
+        alert('블로그를 생성해주세요.');
+        window.location.replace('/yamoonjin.com/blogCreate');
+      } else {
+        window.location.replace('/yamoonjin.com/blog/' + res.blogname);
+      }
+    });
+  };
+
+  const onClickMyArchive = (e) => {
+    e.preventDefault();
+    fetch('http://localhost:8080/blog/myBlog', {
+      method: 'GET',
+      headers:{
+        'X-AUTH-TOKEN' : sessionStorage.getItem('token'),
+      }
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      if (res.existence === false) {
+        alert('블로그를 생성해주세요.');
+        window.location.replace('/yamoonjin.com/blogCreate');
+      } else {
+        window.location.replace('/yamoonjin.com/blog/' + res.blogname + '/archive/list');
+      }
+    });
+  };
+
   const LogOut = (e) =>{
     e.preventDefault();
     fetch("http://localhost:8080/log-out", {
@@ -39,11 +79,11 @@ const Navigation = () => {
       <Link to='/yamoonjin.com/chat' className='linkStyle'>
         CHAT<img src={Chat} className='naviIcon' alt='chat'/>
       </Link>
-      <Link to='/yamoonjin.com/blog' className='linkStyle'>
-        BLOG<img src={Blog} className='naviIcon' alt='blog'/>
+      <Link to='' onClick={onClickMyBlog} className='linkStyle' >
+        MY BLOG<img src={Blog} className='naviIcon' alt='blog'/>
       </Link>
-      <Link to='/yamoonjin.com/archive' className='linkStyle'>
-        ARCHIVE<img src={Archive} className='naviIcon' alt='portfolio'/>
+      <Link to='' onClick={onClickMyArchive} className='linkStyle'>
+        MY ARCHIVE<img src={Archive} className='naviIcon' alt='portfolio'/>
       </Link>
       <button className='naviBtn' onClick={()=>(window.location.href='/yamoonjin.com/mypage')}>
         MYPAGE

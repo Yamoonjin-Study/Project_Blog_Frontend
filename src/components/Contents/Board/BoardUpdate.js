@@ -46,7 +46,7 @@ const BoardUpdate = ({ match }) => {
       content: $('input[name=\'content\']').val(),
       category: null,
     };
-    fetch('http://localhost:8080/write-board', {
+    fetch('http://localhost:8080/update-board/'+board_id, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
