@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Document, Page } from 'react-pdf';
 
-const PdfPreviewer = (url) => {
+const PdfViewer = (url) => {
 
   const [pdfUrl, setPdfUrl] = useState('');
 
@@ -20,7 +20,7 @@ const PdfPreviewer = (url) => {
     e.preventDefault();
     if (pageNumber > 1) {
       setPageNumber(pageNumber - 1);
-      document.getElementById('inputTitle').scrollIntoView(true);
+      document.getElementById('divider').scrollIntoView(true);
     } else {
       alert('첫 페이지 입니다.');
     }
@@ -30,7 +30,7 @@ const PdfPreviewer = (url) => {
     e.preventDefault();
     if (pageNumber < numPages) {
       setPageNumber(pageNumber + 1);
-      document.getElementById('inputTitle').scrollIntoView(true);
+      document.getElementById('divider').scrollIntoView(true);
     } else {
       alert('마지막 페이지 입니다.');
     }
@@ -42,7 +42,7 @@ const PdfPreviewer = (url) => {
       alert('전체 페이지 범위를 확인해주세요.');
     } else {
       setPageNumber(parseInt(e.target.value));
-      document.getElementById('inputTitle').scrollIntoView(true);
+      document.getElementById('divider').scrollIntoView(true);
     }
   };
 
@@ -84,4 +84,4 @@ const PdfPreviewer = (url) => {
   );
 };
 
-export default PdfPreviewer;
+export default PdfViewer;

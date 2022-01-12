@@ -33,7 +33,7 @@ const LoginForm = () => {
         alert(res.user.nickname + " 님, 반갑습니다.");
         sessionStorage.setItem("user_id", res.user.id);
         sessionStorage.setItem("token", res.token);
-        window.history.go(-1);
+        window.location.href = '/yamoonjin.com';
       }else{
         alert("이메일, 비밀번호를 확인해주세요.");
       }

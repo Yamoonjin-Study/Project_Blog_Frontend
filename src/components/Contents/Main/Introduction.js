@@ -28,7 +28,7 @@ const Introduction = () => {
 
       <div className='section2'>
         <div className='section2Contents'>
-          <h4 className='mainTitle'>MANAGE YOU PROFILE</h4>
+          <h4 className='mainTitle' style={{textAlign:'left'}}>MANAGE YOU PROFILE</h4>
           <h6 className='subTitle'>We offer a variety of features to help you manage your Profile.</h6>
           <div className='divider' style={{margin:'25px 0'}}></div>
           <h2 className='mainContents'>

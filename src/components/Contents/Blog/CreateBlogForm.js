@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../../assets/css/main.css';
 import { Link } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
+import Footer from '../../Footer/Footer';
 
 const CreateBlogForm = (props) => {
   let blog_id;
@@ -140,6 +141,7 @@ const CreateBlogForm = (props) => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

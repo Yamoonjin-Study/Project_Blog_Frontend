@@ -54,7 +54,7 @@ function App(props) {
       <Route path='/yamoonjin.com' exact={true} component={MainPage} />
       <Route path='/yamoonjin.com/signin' exact={true} component={LoginPage} />
       <Route path='/yamoonjin.com/signup' exact={true} component={SignUpPage} />
-      <Route path='/yamoonjin.com/mypage' exact={true} component={MyPage} />
+      <Route path='/yamoonjin.com/mypage' component={MyPage} />
       <Route path='/yamoonjin.com/blog' component={BlogPage} />
       <Route path='/yamoonjin.com/blogCreate' exact={true} component={CreateBlogForm} />
       <Route path='/yamoonjin.com/archive' exact={true} component={ArchiveMain} />

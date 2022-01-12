@@ -19,6 +19,7 @@ const BoardDetail = ({ match }) => {
     })
     .then(res => res.json())
     .then(res => {
+      console.log(res);
       setBoard(res.board);
       setReplyList(res.replies);
       setLikes(res.likes);
@@ -74,6 +75,32 @@ const BoardDetail = ({ match }) => {
     window.location.reload();
   };
 
+  const blog_name = window.location.pathname.split('/').at(3);
+
+  const backToList = () =>{
+    window.location.href='/yamoonjin.com/blog/'+blog_name+'/board/list';
+  }
+
+  const likeBoard = (e) => {
+    e.preventDefault();
+    fetch('http://localhost:8080/like-board/'+board.id,{
+      method: 'GET',
+      headers: {
+        'X-AUTH-TOKEN': sessionStorage.getItem('token'),
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+    })
+    .then(res=>res.json())
+    .then(res=>{
+      if(res.responseMessage === 'Like Board Success'){
+        alert('좋아요가 등록되었습니다.');
+        window.location.reload();
+      }else{
+        alert('이미 좋아요한 게시글 입니다.');
+      }
+    });
+  }
+
   return (
     <div>
       <h1>{board.title}</h1><br />
@@ -84,8 +111,8 @@ const BoardDetail = ({ match }) => {
         <br />
         <h6>조회수 : {board.count}</h6>
         <h6>좋아요 : {likes.length}</h6>
-        <button>글 목록</button>
-        <button>좋아요</button>
+        <button className='btn3 btnHover' onClick={backToList}>글 목록</button>
+        <button className='btn3 btnHover' onClick={likeBoard}>좋아요</button>
       </div>
       {
         replyList.map &&
@@ -100,7 +127,7 @@ const BoardDetail = ({ match }) => {
         height: '100px',
         verticalAlign: 'middle',
       }} onChange={onChangeReply} />
-        <button onClick={SubmitReply}>댓글달기</button>
+        <button className='btn2 btnHover' onClick={SubmitReply}>댓글달기</button>
       </form>
       <br />
       <br />

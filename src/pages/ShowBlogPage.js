@@ -21,6 +21,9 @@ const ShowBlogPage = ({ match }) => {
     main_content: '',
     menu_design: '',
     category: '',
+    business_card:'',
+    portfolio:'',
+    resume:'',
   });
 
   const [blogDesign, setBlogDesign] = useState({
@@ -92,11 +95,6 @@ const ShowBlogPage = ({ match }) => {
         <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck}
                     blogDesign={blogDesign} goMain={goMain} />
       </Route>
-
-      <Route path={'/yamoonjin.com/blog/' + blogname + '/guestbook'} exact={true}>
-        <GuestBooks blogOwnerCheck={blogOwnerCheck} />
-      </Route>
-
       <Route path={'/yamoonjin.com/blog/' + blogname + '/settings'} exact={true}>
         {
           blogOwnerCheck === 'true'

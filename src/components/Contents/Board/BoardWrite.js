@@ -61,6 +61,8 @@ const BoardWrite = () => {
   };
   return (
     <div className='container'>
+      <h4 className='mainTitle'>Write Board</h4>
+      <div className='divider' id='divider'></div>
       제목 : <input type='text' name='title' />
       <input type='text' name='content' style={{ display: 'none' }} />
       <ReactSummernote

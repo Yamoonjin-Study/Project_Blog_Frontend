@@ -75,6 +75,26 @@ const ReplyList = (replies) => {
     });
   };
 
+  const likeReply = (e) =>{
+    e.preventDefault();
+    fetch('http://localhost:8080/like-reply/'+reply.id,{
+      method: 'GET',
+      headers: {
+        'X-AUTH-TOKEN': sessionStorage.getItem('token'),
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+    })
+    .then(res=>res.json())
+    .then(res=>{
+      if(res.responseMessage === 'Like Reply Success'){
+        alert('좋아요가 등록되었습니다.');
+        window.location.reload();
+      }else{
+        alert('이미 좋아요한 댓글 입니다.');
+      }
+    });
+  }
+
   return (
     <div className='replyList'>
       <h5>{reply.writer.nickname}</h5>
@@ -82,10 +102,10 @@ const ReplyList = (replies) => {
       <div className={'updateReplyForm '+reply.id}
            style={{ display: 'none' }}>
         <textarea name='content' defaultValue={reply.content}></textarea><br />
-        <button onClick={updateReply}>
+        <button className='btn4 btnHover' onClick={updateReply}>
           수정하기
         </button>
-        <button onClick={hideUpdateReplyForm}>
+        <button className='btn4 btnHover' onClick={hideUpdateReplyForm}>
           취소하기
         </button>
       </div>
@@ -93,16 +113,16 @@ const ReplyList = (replies) => {
         {
           reply.writer.id.toString() === sessionStorage.getItem(
             'user_id').toString()
-          && <button onClick={displayUpdateReplyForm}>수정하기</button>
+          && <button className='btn4 btnHover' onClick={displayUpdateReplyForm}>수정하기</button>
         }
         {
           reply.writer.id.toString() === sessionStorage.getItem(
             'user_id').toString()
-          && <button onClick={deleteReply}>삭제하기</button>
+          && <button className='btn4 btnHover' onClick={deleteReply}>삭제하기</button>
         }
       </h6>
-      <button>좋아요</button>
-      <button>댓글달기</button>
+      <button className='btn4 btnHover' onClick={likeReply}>좋아요</button>
+      <button className='btn4 btnHover'>댓글달기</button>
     </div>
   );
 };

@@ -19,3 +19,7 @@
   opacity: 100%;
   transition: 0.3s;
 }
+
+.imgFileReader {
+  padding: 20px 0 20px 0;
+}

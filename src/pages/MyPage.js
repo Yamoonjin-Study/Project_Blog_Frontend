@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import '../assets/css/myPage.css';
+import { Route } from 'react-router-dom';
+import MyPageMain from '../components/Contents/MyPage/MyPageMain';
+import UserUpdateForm from '../components/Contents/MyPage/UserUpdateForm';
+import WithdrawalCheck from '../components/Contents/MyPage/WithdrawalCheck';
 
 const MyPage = () => {
-  let user_info;
+  const [user, setUser] = useState({});
   const user_id = sessionStorage.getItem('user_id');
   const token = sessionStorage.getItem('token');
 
-  fetch("http://localhost:8080/userinfo/" + user_id, {
-    method: 'GET',
-    headers:{
-      'X-AUTH-TOKEN' : token,
-    }
-  })
-  .then(res => {
-    return res.json();
-  })
-  .then(res => {
-    user_info = JSON.stringify(res);
-    console.log(user_info);
-  });
+  useEffect(() => {
+    fetch('http://localhost:8080/userinfo/' + user_id, {
+      method: 'GET',
+      headers: {
+        'X-AUTH-TOKEN': token,
+      },
+    })
+    .then(res => {
+      return res.json();
+    })
+    .then(res => {
+      setUser(res);
+    });
+  }, []);
 
   return (
-    <div style={{height:'500px'}}>
+    <div>
+      <Route path='/yamoonjin.com/mypage' exact={true}>
+        <MyPageMain user={user}/>
+      </Route>
+      <Route path='/yamoonjin.com/mypage/update' exact={true}>
+        <UserUpdateForm user={user} />
+      </Route><Route path='/yamoonjin.com/mypage/withdrawal' exact={true}>
+        <WithdrawalCheck user={user} />
+      </Route>
     </div>
   );
 };
