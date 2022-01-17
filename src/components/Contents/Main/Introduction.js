@@ -13,7 +13,7 @@ const Introduction = () => {
           <h2 className='mainContents'>
             We want anyone to easily and conveniently<br/>create, manage, and communicate with their own blog<br/>through our blogging service.
           </h2>
-          <Link to='/yamoonjin.com/blog' className='makeBlogLink'>MAKE YOUR BLOG NOW!</Link>
+          <Link to='/yamoonjin.com/blogCreate' className='makeBlogLink'>MAKE YOUR BLOG NOW!</Link>
         </div>
       </div>
 

@@ -24,7 +24,11 @@ const BlogDetail = ({ blog, blogOwnerCheck, goMain, blogDesign }) => {
         }
         {
           blog.main_content === 1 &&
-          <BlogBusinessCard blog={blog}/>
+          (
+            blog.business_card !== null
+            ?<BlogBusinessCard blog={blog}/>
+              : <h3>명함을 등록해주세요. <i>Business Card is null.</i></h3>
+          )
         }
         {
           blog.main_content === 2 &&

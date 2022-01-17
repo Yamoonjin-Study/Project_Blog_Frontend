@@ -22,7 +22,7 @@ const BoardDetail = ({ match }) => {
       console.log(res);
       setBoard(res.board);
       setReplyList(res.replies);
-      setLikes(res.likes);
+      setLikes(res.board.likes);
     });
   }, []);
 

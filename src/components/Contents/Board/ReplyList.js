@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../../assets/css/board.css';
 import $ from 'jquery';
 
@@ -75,31 +75,47 @@ const ReplyList = (replies) => {
     });
   };
 
-  const likeReply = (e) =>{
+  const likeReply = (e) => {
     e.preventDefault();
-    fetch('http://localhost:8080/like-reply/'+reply.id,{
+    fetch('http://localhost:8080/like-reply/' + reply.id, {
       method: 'GET',
       headers: {
         'X-AUTH-TOKEN': sessionStorage.getItem('token'),
         'Content-Type': 'application/json; charset=utf-8',
       },
     })
-    .then(res=>res.json())
-    .then(res=>{
-      if(res.responseMessage === 'Like Reply Success'){
+    .then(res => res.json())
+    .then(res => {
+      if (res.responseMessage === 'Like Reply Success') {
         alert('좋아요가 등록되었습니다.');
         window.location.reload();
-      }else{
+      } else {
         alert('이미 좋아요한 댓글 입니다.');
       }
     });
-  }
+  };
+
+  const [showLikes, setShowLikes] = useState({});
+
+  useEffect(() => {
+    fetch('http://localhost:8080/show-like-reply/' + reply.id, {
+      method: 'GET',
+      headers: {
+        'X-AUTH-TOKEN': sessionStorage.getItem('token'),
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+    })
+    .then(res => res.json())
+    .then(res => {
+        setShowLikes(res.like);
+    });
+  }, []);
 
   return (
     <div className='replyList'>
       <h5>{reply.writer.nickname}</h5>
       <p className={'reply_content_' + reply.id}>{reply.content}</p>
-      <div className={'updateReplyForm '+reply.id}
+      <div className={'updateReplyForm ' + reply.id}
            style={{ display: 'none' }}>
         <textarea name='content' defaultValue={reply.content}></textarea><br />
         <button className='btn4 btnHover' onClick={updateReply}>
@@ -113,15 +129,23 @@ const ReplyList = (replies) => {
         {
           reply.writer.id.toString() === sessionStorage.getItem(
             'user_id').toString()
-          && <button className='btn4 btnHover' onClick={displayUpdateReplyForm}>수정하기</button>
+          && <button className='btn4 btnHover'
+                     onClick={displayUpdateReplyForm}>수정하기</button>
         }
         {
           reply.writer.id.toString() === sessionStorage.getItem(
             'user_id').toString()
-          && <button className='btn4 btnHover' onClick={deleteReply}>삭제하기</button>
+          && <button className='btn4 btnHover'
+                     onClick={deleteReply}>삭제하기</button>
         }
       </h6>
-      <button className='btn4 btnHover' onClick={likeReply}>좋아요</button>
+      <button className='btn4 btnHover' onClick={likeReply}>좋아요 &nbsp;
+        {
+          showLikes !== null
+            ? showLikes.length
+            : 0
+        }
+      </button>
       <button className='btn4 btnHover'>댓글달기</button>
     </div>
   );

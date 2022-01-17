@@ -33,7 +33,12 @@ const BoardList = (boards) => {
       <div className='boardList'>
         <div className='boardContent'>
           <h5>{board.title}</h5>
-          <p dangerouslySetInnerHTML={{ __html: convertedContent }}></p>
+          <div className='divider'></div>
+          {
+            convertedContent.indexOf('<p><img') !== 0
+            ? <p style={{height:'150px', overflow:'hidden', position:'relative', top:'50%', transform:'translateY(-65%)'}} dangerouslySetInnerHTML={{ __html: convertedContent }}></p>
+            : <p style={{height:'150px', overflow:'hidden'}} dangerouslySetInnerHTML={{ __html: convertedContent }}></p>
+          }
           <h6>{board.createDate.split('T').at(0)}</h6>
           <h6>{board.category}</h6>
           <h6>count : {board.count}</h6>

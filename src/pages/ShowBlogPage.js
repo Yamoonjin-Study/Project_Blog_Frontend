@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import '../assets/css/showBlog.css';
 import BlogSetting from '../components/Contents/Blog/BlogSetting';
 import BlogDetail from '../components/Contents/Blog/BlogDetail';
-import GuestBooks from '../components/Contents/GuestBook/GuestBooks';
 import BlogFooter from '../components/Footer/BlogFooter';
 import { Route } from 'react-router-dom';
 

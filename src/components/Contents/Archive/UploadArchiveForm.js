@@ -76,10 +76,13 @@ const UploadArchiveForm = () => {
           .then(res)
           .then(res => {
             console.log(res);
+            alert('작성되었습니다.');
+            window.location.href="/yamoonjin.com/blog/"+blog_name+"/archive/list";
           });
+        }else{
+          alert('작성되었습니다.');
+          window.location.href="/yamoonjin.com/blog/"+blog_name+"/archive/list";
         }
-        alert('작성되었습니다.');
-        window.location.href="/yamoonjin.com/blog/"+blog_name+"/archive/list"
       } else {
         alert('작성 실패하였습니다.');
       }
@@ -102,7 +105,7 @@ const UploadArchiveForm = () => {
         <br />
         <input type='file' name='pdfFile' onChange={onLoadFile} accept='.pdf'
                style={{ display: 'inline-block' }} />
-        (pdf 파일만 첨부 가능합니다.)
+        (pdf 파일만 첨부 가능합니다. 이미지는 아래 양식에서 첨부해주세요.)
         <br />
         Preview : (화면에 마우스를 올리면, 하단에 Preview Navigation 나타납니다. )<br />
         {
