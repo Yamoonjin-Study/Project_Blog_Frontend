@@ -45,9 +45,8 @@ const CreateBlogForm = (props) => {
     .then(res => res.json())
     .then(res=>{
       if(res.responseMessage === "Create Blog Success"){
-        blog_id = res.blog.id;
 
-        fetch("http://localhost:8080/save-file/"+blog_id,{
+        fetch("http://localhost:8080/save-file",{
           method:"POST",
           headers:{
             'X-AUTH-TOKEN': sessionStorage.getItem('token'),
@@ -135,9 +134,8 @@ const CreateBlogForm = (props) => {
             <div className='signUpUnderLine'></div>
             <br />
 
-            <Link to='/yamoonjin.com/blog'><input type='button' value='Cancel' className='btn2 btnHover'/></Link>
-            <input type='button' value='Preview' className='btn2 btnHover'/>
             <input type='submit' value='Create' className='btn2 btnHover'/>
+            <Link to='/yamoonjin.com/blog'><input type='button' value='Cancel' className='btn2 btnHover'/></Link>
           </form>
         </div>
       </div>

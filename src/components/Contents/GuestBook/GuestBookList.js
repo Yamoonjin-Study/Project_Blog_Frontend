@@ -1,9 +1,10 @@
 import React from 'react';
-import $ from 'jquery';
 
 const GuestBookList = (guestBooks) => {
 
   const guestBook = guestBooks.guestBooks;
+  console.log(guestBook);
+  console.log(sessionStorage.getItem('user_id'));
 
   let create_date = new Date(guestBook.date);
 
@@ -30,7 +31,6 @@ const GuestBookList = (guestBooks) => {
       method: 'DELETE',
       headers: {
         'X-AUTH-TOKEN': sessionStorage.getItem('token'),
-        'Content-Type': 'application/json; charset=utf-8',
       },
     })
     .then(res=>res.json())
