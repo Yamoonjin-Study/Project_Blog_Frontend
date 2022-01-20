@@ -11,7 +11,7 @@ const BlogSetting_info = (blog_info) => {
   const submitCreateBlog = (e) => {
     e.preventDefault();
     updateBlogInfo = {
-      name: $("input[name='name']").val(),
+      blogName: $("input[name='blogName']").val(),
       info: $("input[name='info']").val(),
       category: $("select[name='category']").val(),
       // icon: '',
@@ -42,8 +42,8 @@ const BlogSetting_info = (blog_info) => {
           onSubmit={submitCreateBlog}>
       <label className='signUpInfo'>BLOG NAME</label>
       <br />
-      <input id='name' name='name' type='text' className='signUpInput'
-             defaultValue={blog_information.name} />
+      <input id='blogName' name='blogName' type='text' className='signUpInput'
+             defaultValue={blog_information.blogName} />
       <div className='signUpUnderLine'></div>
       <br />
 

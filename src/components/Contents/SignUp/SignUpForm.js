@@ -9,7 +9,7 @@ const SignUpForm = (props) => {
     username:"",
     password:"",
     passwordCheck:"",
-    nickname:"",
+    nickName:"",
     email:"",
     phone:""
   });
@@ -75,7 +75,7 @@ const SignUpForm = (props) => {
 
             <label className='signUpInfo'>ENTER YOUR NICKNAME</label>
             <br />
-            <input id='nickname' name='nickname' type='text'className='signUpInput' onChange={onChangeValue}/>
+            <input id='nickName' name='nickName' type='text'className='signUpInput' onChange={onChangeValue}/>
             <div className='signUpUnderLine'></div>
             <br />
 

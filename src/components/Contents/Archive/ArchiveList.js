@@ -4,7 +4,7 @@ import PdfViewer from './PdfViewer';
 const ArchiveList = (archives) => {
 
   const archive = archives.archives;
-  const file_path = archive.file_path;
+  const filePath = archive.filePath;
 
   return (
     <div className='boardList'>
@@ -12,8 +12,8 @@ const ArchiveList = (archives) => {
         <h5>{archive.title}</h5>
         <div className='divider'></div>
         {
-          file_path !== null
-            ? <PdfViewer url={file_path} />
+          filePath !== null
+            ? <PdfViewer url={filePath} />
             : null
         }
         {<h4

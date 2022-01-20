@@ -11,16 +11,16 @@ const ShowBlogPage = ({ match }) => {
   const [blogOwnerCheck, setBlogOwnerCheck] = useState('');
   const [blog, setBlog] = useState({
     id: '',
-    name: '',
+    blogName: '',
     info: '',
-    icon: '',
-    create_date: '',
+    iconImage: '',
+    createDate: '',
     status: '',
-    logo_image: '',
-    main_content: '',
-    menu_design: '',
+    logoImage: '',
+    mainContent: '',
+    menuDesign: '',
     category: '',
-    business_card:'',
+    businessCard:'',
     portfolio:'',
     resume:'',
   });
@@ -50,7 +50,7 @@ const ShowBlogPage = ({ match }) => {
     })
     .then(res => res.json())
     .then(res => {
-      if (res.blogname === blogname) {
+      if (res.blogName === blogname) {
         setBlogOwnerCheck('true');
       } else {
         setBlogOwnerCheck('false');
@@ -77,17 +77,19 @@ const ShowBlogPage = ({ match }) => {
   }, []);
 
   const goMain = () => {
-    window.location.href = '/yamoonjin.com/blog/' + blog.name;
+    window.location.href = '/yamoonjin.com/blog/' + blog.blogName;
   };
 
   useEffect(() => {
-    if (blog.menu_design === 0) {
+    if (blog.menuDesign === 0) {
       setBlogDesign(blogLeftDesign);
-    } else if (blog.menu_design === 2) {
+    } else if (blog.menuDesign === 2) {
       setBlogDesign(blogRightDesign);
     }
   }, [blog]);
 
+
+  console.log(blog);
   return (
     <div>
       <Route path={'/yamoonjin.com/blog/' + blogname}>

@@ -28,23 +28,34 @@ function App(props) {
     }
     navigation = (<Navigation />);
 
-    fetch('http://localhost:8080/log-in/check', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        'X-AUTH-TOKEN': sessionStorage.getItem('token'),
-      },
-      body: JSON.stringify({ 'token': sessionStorage.getItem('token') }),
-    })
-    .then(res => res.json())
-    .then(res => {
-      IsLogin = res.isLogin;
-      if (IsLogin !== true) {
+    if(sessionStorage.getItem('token') !== null){
+      fetch('http://localhost:8080/log-in/check', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'X-AUTH-TOKEN': sessionStorage.getItem('token'),
+        },
+        body: JSON.stringify({ 'token': sessionStorage.getItem('token') }),
+      })
+      .then(res => res.json())
+      .then(res => {
+        IsLogin = res.isLogin;
+        if (IsLogin !== true) {
+          sessionStorage.removeItem('user_id');
+          sessionStorage.removeItem('token');
+          alert('로그아웃 되었습니다. 다시 로그인해주세요.');
+          window.location.href='/yamoonjin.com/signin';
+        }
+        console.log('로그인 여부 : ' + IsLogin);
+      }).catch(err=>{
         sessionStorage.removeItem('user_id');
         sessionStorage.removeItem('token');
-      }
-      console.log('로그인 여부 : ' + IsLogin);
-    });
+        console.log(err);
+        alert('로그아웃 되었습니다. 다시 로그인해주세요.');
+        window.location.href='/yamoonjin.com/signin';
+      });
+    }
+
   }
 
   return (

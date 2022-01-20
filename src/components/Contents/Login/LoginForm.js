@@ -30,7 +30,7 @@ const LoginForm = () => {
     .then(res=>{
       console.log(res.responseMessage);
       if(res.responseMessage !== "Login Fail"){
-        alert(res.user.nickname + " 님, 반갑습니다.");
+        alert(res.user.nickName + " 님, 반갑습니다.");
         sessionStorage.setItem("user_id", res.user.id);
         sessionStorage.setItem("token", res.token);
         window.location.href = '/yamoonjin.com';

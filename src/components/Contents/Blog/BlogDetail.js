@@ -12,32 +12,35 @@ import GuestBooks from '../GuestBook/GuestBooks';
 const BlogDetail = ({ blog, blogOwnerCheck, goMain, blogDesign }) => {
   return (
     <div className={blogDesign.section}>
-      <img className='showBlogTitleImg' src={blog.logo_image}
+      <img className='showBlogTitleImg' src={blog.logoImage}
            onClick={goMain} alt='logo' />
       <div className={blogDesign.menu}>
         <BlogMenu blog={blog} blogOwnerCheck={blogOwnerCheck} goMain={goMain} />
       </div>
-      <Route path={'/yamoonjin.com/blog/' + blog.name} exact={true}>
+      <Route path={'/yamoonjin.com/blog/' + blog.blogName} exact={true}>
         {
-          blog.main_content === 0 &&
-          <BlogBoardList/>
+          blog.mainContent === 0 &&
+          <BlogBoardList />
         }
         {
-          blog.main_content === 1 &&
+          blog.mainContent === 1 &&
           (
-            blog.business_card !== null
-            ?<BlogBusinessCard blog={blog}/>
+            blog.businessCard !== null
+              ? <BlogBusinessCard blog={blog} />
               : <h3>명함을 등록해주세요. <i>Business Card is null.</i></h3>
           )
         }
         {
-          blog.main_content === 2 &&
-          <BlogArchiveList blog={blog}/>
+          blog.mainContent === 2 &&
+          <BlogArchiveList blog={blog} />
         }
       </Route>
-      <Route path={'/yamoonjin.com/blog/' + blog.name + '/board'}><BoardPage /></Route>
-      <Route path={'/yamoonjin.com/blog/' + blog.name + '/archive'}><ArchivePage /></Route>
-      <Route path={'/yamoonjin.com/blog/' + blog.name + '/guestbook'} exact={true}>
+      <Route path={'/yamoonjin.com/blog/' + blog.blogName
+      + '/board'}><BoardPage /></Route>
+      <Route path={'/yamoonjin.com/blog/' + blog.blogName
+      + '/archive'}><ArchivePage /></Route>
+      <Route path={'/yamoonjin.com/blog/' + blog.blogName + '/guestbook'}
+             exact={true}>
         <GuestBooks blogOwnerCheck={blogOwnerCheck} />
       </Route>
     </div>

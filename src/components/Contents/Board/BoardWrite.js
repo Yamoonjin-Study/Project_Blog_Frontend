@@ -7,10 +7,11 @@ import 'bootstrap/js/dropdown';
 import 'bootstrap/js/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
 import $ from 'jquery';
+import SummerNote from '../Api/SummerNote';
 
 const BoardWrite = () => {
 
-  const blog_name = window.location.pathname.split('/').at(3);
+  const blogName = window.location.pathname.split('/').at(3);
 
   let boardWrite = {
     title: '',
@@ -35,7 +36,7 @@ const BoardWrite = () => {
   };
 
   const goBoard = () => {
-    window.location.href = '/yamoonjin.com/blog/' + blog_name + '/board';
+    window.location.href = '/yamoonjin.com/blog/' + blogName + '/board';
   };
 
   const submitBoard = (e) => {
@@ -56,7 +57,7 @@ const BoardWrite = () => {
     .then(res => res)
     .then(res => {
       alert('글을 작성하였습니다.');
-      window.location.href = '/yamoonjin.com/blog/' + blog_name + '/board/list';
+      window.location.href = '/yamoonjin.com/blog/' + blogName + '/board/list';
     });
   };
   return (
@@ -64,34 +65,7 @@ const BoardWrite = () => {
       <h4 className='mainTitle'>Write Board</h4>
       <div className='divider' id='divider'></div>
       제목 : <input type='text' name='title' />
-      <input type='text' name='content' style={{ display: 'none' }} />
-      <ReactSummernote
-        value='내용을 입력하여주세요'
-        options={{
-          lang: 'ko-KR',
-          height: 500,
-          dialogsInBody: true,
-          toolbar: [
-            // [groupName, [list of button]]
-            ['fontname', ['fontname']],
-            ['fontsize', ['fontsize']],
-            ['style',
-              ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
-            ['color', ['forecolor', 'color']],
-            ['table', ['table']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['height', ['height']],
-            ['insert', ['picture', 'link', 'video']],
-            ['view', ['fullscreen', 'help']],
-          ],
-          fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
-            '맑은 고딕', '궁서', '굴림체', '굴림', '돋움체', '바탕체'],
-          fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22',
-            '24', '28', '30', '36', '50', '72'],
-        }}
-        onChange={onContentChange}
-        onImageUpload={onImageUpload}
-      />
+      <SummerNote />
       <button className='btn2 btnHover' onClick={submitBoard}>작성하기</button>
       <button className='btn2 btnHover' onClick={goBoard}>취소</button>
     </div>
