@@ -19,7 +19,6 @@ const BoardDetail = ({ match }) => {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       setBoard(res.board);
       setReplyList(res.replies);
       setLikes(res.board.likes);
@@ -46,22 +45,23 @@ const BoardDetail = ({ match }) => {
   }
 
   const [reply, setReply] = useState({
-    top_board_id: '',
-    top_reply_id: '',
+    topBoardId: '',
+    topReplyId: '',
     content: '',
   });
 
   const onChangeReply = (e) => {
     e.preventDefault();
     setReply({
-      top_board_id: board.id,
-      top_reply_id: null,
+      topBoardId: board.id,
+      topReplyId: null,
       [e.target.name]: e.target.value,
     });
   };
 
   const SubmitReply = (e) => {
     e.preventDefault();
+    console.log(reply);
     fetch('http://localhost:8080/write-reply', {
       method: 'POST',
       headers: {
@@ -70,9 +70,15 @@ const BoardDetail = ({ match }) => {
       },
       body: JSON.stringify(reply),
     }).then(res => res.json())
-    .then();
-    alert('댓글작성이 완료되었습니다.');
-    window.location.reload();
+    .then(res=>{
+      if(res.responseMessage === 'Write Reply Success'){
+        alert('댓글작성이 완료되었습니다.');
+        window.location.reload();
+      }else{
+        alert('댓글작성에 실패하였습니다.');
+      }
+    });
+
   };
 
   const blog_name = window.location.pathname.split('/').at(3);

@@ -88,15 +88,13 @@ const ShowBlogPage = ({ match }) => {
     }
   }, [blog]);
 
-
-  console.log(blog);
   return (
     <div>
-      <Route path={'/yamoonjin.com/blog/' + blogname}>
+      <Route path={'/yamoonjin.com/blog/' + blog.blogName}>
         <BlogDetail blog={blog} blogOwnerCheck={blogOwnerCheck}
                     blogDesign={blogDesign} goMain={goMain} />
       </Route>
-      <Route path={'/yamoonjin.com/blog/' + blogname + '/settings'} exact={true}>
+      <Route path={'/yamoonjin.com/blog/' + blog.blogName + '/settings'} exact={true}>
         {
           blogOwnerCheck === 'true'
             ? <BlogSetting blog={blog} blogOwnerCheck={blogOwnerCheck}

@@ -27,7 +27,7 @@ const Navigation = () => {
         alert('블로그를 생성해주세요.');
         window.location.replace('/yamoonjin.com/blogCreate');
       } else {
-        window.location.replace('/yamoonjin.com/blog/' + res.blogname);
+        window.location.replace('/yamoonjin.com/blog/' + res.blogName);
       }
     });
   };
@@ -47,7 +47,7 @@ const Navigation = () => {
         alert('블로그를 생성해주세요.');
         window.location.replace('/yamoonjin.com/blogCreate');
       } else {
-        window.location.replace('/yamoonjin.com/blog/' + res.blogname + '/archive/list');
+        window.location.replace('/yamoonjin.com/blog/' + res.blogName + '/archive/list');
       }
     });
   };
