@@ -11,6 +11,8 @@ import BlogPage from './pages/BlogPage';
 import MyPage from './pages/MyPage';
 import CreateBlogForm from './components/Contents/Blog/CreateBlogForm';
 import ArchiveMain from './components/Contents/Archive/ArchiveMain';
+import Chat from './components/Contents/Chat/Chat';
+import Join from './components/Contents/Chat/Join/Join';
 
 function App(props) {
   let IsLogin;
@@ -69,6 +71,9 @@ function App(props) {
       <Route path='/yamoonjin.com/blog' component={BlogPage} />
       <Route path='/yamoonjin.com/blogCreate' exact={true} component={CreateBlogForm} />
       <Route path='/yamoonjin.com/archive' exact={true} component={ArchiveMain} />
+      <Route path='/' component={Join} />
+      <Route path='/chat' component={Chat} />
+
       {
         props.location.pathname.indexOf('/yamoonjin.com/blog') !== 0
         ? <Footer />
