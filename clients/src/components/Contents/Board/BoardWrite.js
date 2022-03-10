@@ -1,15 +1,9 @@
 import React from 'react';
-import ReactSummernote from 'react-summernote';
-import 'react-summernote/dist/react-summernote.css';
-import 'react-summernote/lang/summernote-ko-KR';
-import 'bootstrap/js/modal';
-import 'bootstrap/js/dropdown';
-import 'bootstrap/js/tooltip';
-import 'bootstrap/dist/css/bootstrap.css';
 import $ from 'jquery';
 import SummerNote from '../Api/SummerNote';
+import { Link } from 'react-router-dom';
 
-const BoardWrite = () => {
+const BoardWrite = (props) => {
 
   const blogName = window.location.pathname.split('/').at(3);
 
@@ -17,26 +11,6 @@ const BoardWrite = () => {
     title: '',
     content: '',
     category: null,
-  };
-
-  const onContentChange = (content) => {
-    $('input[name=\'content\']').val(content);
-  };
-
-  const onImageUpload = (images, insertImage) => {
-    for (let i = 0; i < images.length; i++) {
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        insertImage(reader.result);
-      };
-
-      reader.readAsDataURL(images[i]);
-    }
-  };
-
-  const goBoard = () => {
-    window.location.href = '/yamoonjin.com/blog/' + blogName + '/board';
   };
 
   const submitBoard = (e) => {
@@ -57,7 +31,7 @@ const BoardWrite = () => {
     .then(res => res)
     .then(res => {
       alert('글을 작성하였습니다.');
-      window.location.href = '/yamoonjin.com/blog/' + blogName + '/board/list';
+      props.history.push('/yamoonjin.com/blog/' + blogName + '/board/list');
     });
   };
   return (
@@ -66,8 +40,8 @@ const BoardWrite = () => {
       <div className='divider' id='divider'></div>
       제목 : <input type='text' name='title' />
       <SummerNote />
-      <button className='btn2 btnHover' onClick={submitBoard}>작성하기</button>
-      <button className='btn2 btnHover' onClick={goBoard}>취소</button>
+      <Link to={'/yamoonjin.com/blog/' + blogName + '/board/list'} onClick={submitBoard}><button className='btn2 btnHover'>Summit</button></Link>
+      <Link to={'/yamoonjin.com/blog/' + blogName + '/board/list'}><button className='btn2 btnHover'>Cancel</button></Link>
     </div>
   );
 };

@@ -1,32 +1,36 @@
-const users = []
+const users = [];
 
-const addUser = ({ id, name, room }) => {
-//이름의 공백 제거
-  name = name.trim().toLowerCase()
-  room = room.trim().toLowerCase()
+const addUser = ({ socketId, userId, nickName }) => {
 
   const existingUser = users.find(
-    (user) => user.room === room && user.name === name
-  )
+    (user) => user.nickName === nickName,
+  );
 
-  if (!name || !room) return { error: '사용자 이름과 방이 필요합니다.' }
-  if (existingUser) return { error: '이미 사용중인 이름입니다.' }
+  if (!nickName) {
+    return { error: '사용자 이름이 필요합니다.' };
+  }
+  if (existingUser) {
+    removeUser(userId);
+  }
+  const user = { socketId, userId, nickName };
 
-  const user = { id, name, room }
+  users.push(user);
 
-  users.push(user)
+  return { user };
+};
 
-  return { user }
-}
+const removeUser = (userId) => {
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].userId === userId) {
+      users.splice(i, 1);
+      i--;
+    }
+  }
+  return users;
+};
 
-const removeUser = (id) => {
-  const index = users.findIndex((user) => user.id === id)
+const getUser = (userId) => users.find((user) => user.userId === userId);
 
-  if (index !== -1) return users.splice(index, 1)[0]
-}
+const getUserList = () => JSON.stringify(users);
 
-const getUser = (id) => users.find((user) => user.id === id)
-
-const getUsersInRoom = (room) => users.filter((user) => user.room === room)
-
-module.exports = { addUser, removeUser, getUser, getUsersInRoom }
+module.exports = { addUser, removeUser, getUser, getUserList };

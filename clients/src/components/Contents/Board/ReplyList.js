@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import '../../../assets/css/board.css';
 import $ from 'jquery';
+import socket from '../../../config/socket';
 
 const ReplyList = (replies) => {
 
+  const url = window.location.pathname;
   const reply = replies.replies;
   let postDate = new Date(reply.postDate);
   let content;
+  let message;
+  let toUserId;
+  let fromUserId;
 
   function dateFormat(postDate) {
     let month = postDate.getMonth() + 1;
@@ -87,8 +92,39 @@ const ReplyList = (replies) => {
     .then(res => res.json())
     .then(res => {
       if (res.responseMessage === 'Like Reply Success') {
-        alert('좋아요가 등록되었습니다.');
-        window.location.reload();
+        toUserId = reply.writer.id;
+        fromUserId = res.like.user.id;
+        let alarm = {
+          message: '',
+          sender_id: fromUserId,
+          receiver_id: toUserId,
+          messageType: 'LikeReply',
+          url: url,
+        };
+        fetch('http://localhost:8080/send-alarm', {
+          method: 'POST',
+          headers: {
+            'X-AUTH-TOKEN': sessionStorage.getItem('token'),
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+          body: JSON.stringify(alarm),
+        })
+        .then(res => res.json())
+        .then(res => {
+          if (res) {
+            let alarmMessage = res.alarmMessage;
+            socket.emit('alarm', {
+              toUserId,
+              fromUserId,
+              alarmMessage: alarmMessage,
+            }, (callback) => {
+              if (callback) {
+                alert('좋아요가 등록되었습니다.');
+                window.location.reload();
+              }
+            });
+          }
+        });
       } else {
         alert('이미 좋아요한 댓글 입니다.');
       }
@@ -107,7 +143,7 @@ const ReplyList = (replies) => {
     })
     .then(res => res.json())
     .then(res => {
-        setShowLikes(res.like);
+      setShowLikes(res.like);
     });
   }, []);
 

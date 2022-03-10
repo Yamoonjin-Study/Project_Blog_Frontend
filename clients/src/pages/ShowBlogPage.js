@@ -7,7 +7,7 @@ import { Route } from 'react-router-dom';
 
 const ShowBlogPage = ({ match }) => {
 
-  const blogname = match.params.name;
+  const blogName = match.params.name;
   const [blogOwnerCheck, setBlogOwnerCheck] = useState('');
   const [blog, setBlog] = useState({
     id: '',
@@ -50,17 +50,17 @@ const ShowBlogPage = ({ match }) => {
     })
     .then(res => res.json())
     .then(res => {
-      if (res.blogName === blogname) {
+      if (res.blogName === blogName) {
         setBlogOwnerCheck('true');
       } else {
         setBlogOwnerCheck('false');
       }
     });
-  }, []);
+  }, [blogName]);
 
   //블로그 호출
   useEffect(() => {
-    fetch('http://localhost:8080/blog/' + blogname, {
+    fetch('http://localhost:8080/blog/' + blogName, {
       method: 'GET',
       headers: {
         'X-AUTH-TOKEN': sessionStorage.getItem('token'),
@@ -74,7 +74,7 @@ const ShowBlogPage = ({ match }) => {
         setBlog(res.blog);
       }
     });
-  }, []);
+  }, [blogName]);
 
   const goMain = () => {
     window.location.href = '/yamoonjin.com/blog/' + blog.blogName;

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactSummernote from 'react-summernote';
 import $ from 'jquery';
 import 'react-summernote/dist/react-summernote.css';
 import 'react-summernote/lang/summernote-ko-KR';
@@ -6,7 +7,6 @@ import 'bootstrap/js/modal';
 import 'bootstrap/js/dropdown';
 import 'bootstrap/js/tooltip';
 import 'bootstrap/dist/css/bootstrap.css';
-import ReactSummernote from 'react-summernote';
 
 const SummerNote = () => {
 

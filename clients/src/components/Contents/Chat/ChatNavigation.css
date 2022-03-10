@@ -1,0 +1,64 @@
+.chatMenu {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  left: 54px;
+  text-align: center;
+  border-top: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+}
+
+.chatSearch {
+  height:23px;
+  text-align: center;
+  overflow-y: hidden;
+  -webkit-transition: 0.3s;
+}
+
+.chatSearchButton {
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.chatSearchInput {
+  border-style: none;
+  border-bottom: #404040 solid 1px;
+}
+
+.chatNaviContents {
+  clear: both;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.chatList {
+  position: relative;
+  top: 30%;
+  -webkit-transition: 0.3s;
+}
+
+.createChatForm {
+  clear: both;
+  height: 0;
+  overflow-y: hidden;
+  -webkit-transition: 0.3s;
+}
+
+.chatNaviContents::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chatNaviContents::-webkit-scrollbar-track {
+  background-color: darkgrey;
+}
+
+.chatNaviContents::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.chatNull {
+  position: relative;
+  top: 30%;
+  font-size: 15pt;
+  color: black;
+}

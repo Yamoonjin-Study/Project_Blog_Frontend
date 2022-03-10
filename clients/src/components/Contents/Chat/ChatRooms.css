@@ -1,0 +1,44 @@
+.chatRooms {
+  width: 100%;
+  display: flex;
+  padding: 20px 15px;
+  cursor: pointer;
+}
+
+.chatRooms:hover {
+  background-color: lightgrey;
+}
+
+.createChatRoom {
+  text-align: center;
+  width: 100%;
+  height: 60px;
+  padding: 20px 15px;
+  cursor: pointer;
+  border: 1px solid lightgray;
+  transition: 0.3s;
+}
+
+.createChatRoom:hover {
+  color: white;
+  background-color: #404040;
+  opacity: 70%;
+}
+
+.createChatRoom:active {
+  opacity: 100%;
+}
+
+.createChatRoom:hover .createChatRoomIcon {
+  filter: invert(100%);
+}
+
+.createChatRoomIcon {
+  margin-left: 60px;
+  float: left;
+}
+
+.createChatRoomInfo {
+  margin-left: 60px;
+  float: left;
+}

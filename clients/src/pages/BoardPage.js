@@ -6,7 +6,8 @@ import { Route } from 'react-router-dom';
 import BoardDetail from '../components/Contents/Board/BoardDetail';
 
 const BoardPage = () => {
-  const blog_name = window.location.pathname.split('/').at(3);
+  const boardPage = window.location.pathname;
+  const blog_name = boardPage.split('/').at(3);
   const [boardList, setBoardList] = useState([]);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const BoardPage = () => {
     .then(res => {
       setBoardList(res);
     });
-  }, []);
+  }, [boardPage]);
 
   return (
     <div className='showBlogContent'>

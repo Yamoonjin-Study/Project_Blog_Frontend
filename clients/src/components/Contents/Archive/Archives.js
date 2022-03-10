@@ -18,9 +18,6 @@ const Archives = () => {
       setArchiveList(res.archive);
     });
   },[]);
-
-  console.log(archiveList);
-
   return (
     <div>
       <h4 className='mainTitle'>Archive List</h4>
