@@ -25,12 +25,12 @@ app.use(router);
 io.on('connection', (socket) => {
   console.log('새로운 connection이 발생하였습니다.');
 
-  socket.on('login', ({ userId, nickName }, callback) => {
+  socket.on('login', ({ userId, username }, callback) => {
     if (getUser(userId)) {
       removeUser(userId);
     }
     const { error, user } = addUser(
-      { socketId: socket.id, userId: userId, nickName: nickName },
+      { socketId: socket.id, userId: userId, username: username },
     );
     if (error) {
       console.log(error);
@@ -39,16 +39,16 @@ io.on('connection', (socket) => {
       callback({ user: user });
       console.log('접속되었습니다!');
       console.log(
-        user.nickName + '님, 반갑습니다. 소켓서버에 연결되었습니다. 실시간으로 활동정보를 알려드릴게요.');
+        user.username + '님, 반갑습니다. 소켓서버에 연결되었습니다. 실시간으로 활동정보를 알려드릴게요.');
     }
   });
 
-  socket.on('reconnection', ({ userId, nickName }, callback) => {
+  socket.on('reconnection', ({ userId, username }, callback) => {
     if (getUser(userId)) {
       removeUser(userId);
     }
     const { error, user } = addUser({
-      socketId: socket.id, userId: userId, nickName: nickName,
+      socketId: socket.id, userId: userId, username: username,
     });
     if (error) {
       console.log(error);

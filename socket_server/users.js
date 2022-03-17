@@ -1,18 +1,18 @@
 const users = [];
 
-const addUser = ({ socketId, userId, nickName }) => {
+const addUser = ({ socketId, userId, username }) => {
 
   const existingUser = users.find(
-    (user) => user.nickName === nickName,
+    (user) => user.username === username,
   );
 
-  if (!nickName) {
+  if (!username) {
     return { error: '사용자 이름이 필요합니다.' };
   }
   if (existingUser) {
     removeUser(userId);
   }
-  const user = { socketId, userId, nickName };
+  const user = { socketId, userId, username };
 
   users.push(user);
 
