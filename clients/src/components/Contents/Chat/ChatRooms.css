@@ -9,6 +9,22 @@
   background-color: lightgrey;
 }
 
+.chatRoomImg {
+  width: 60px;
+  height: 60px;
+  word-break: normal;
+}
+
+.chatRoomUserImg {
+  border: 1px solid #D3D3D3;
+  border-radius: 30%;
+}
+
+.chatRoomInfo {
+  width: 200px;
+  word-break: normal;
+}
+
 .createChatRoom {
   text-align: center;
   width: 100%;

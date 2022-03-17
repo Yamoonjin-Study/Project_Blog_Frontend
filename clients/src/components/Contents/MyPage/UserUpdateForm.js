@@ -14,7 +14,6 @@ const UserUpdateForm = (user) => {
       existingPassword: $('#existingPassword').val(),
       password: $('#password').val(),
       passwordCheck: $('#passwordCheck').val(),
-      nickname: $('#nickname').val(),
       email: $('#email').val(),
       phone: $('#phone').val(),
     };
@@ -81,14 +80,6 @@ const UserUpdateForm = (user) => {
             <br />
             <input id='username' name='username' type='text'
                    className='signUpInput' defaultValue={user_info.username}
-            />
-            <div className='signUpUnderLine'></div>
-            <br />
-
-            <label className='signUpInfo'>ENTER YOUR NICKNAME</label>
-            <br />
-            <input id='nickname' name='nickname' type='text'
-                   className='signUpInput' defaultValue={user_info.nickname}
             />
             <div className='signUpUnderLine'></div>
             <br />

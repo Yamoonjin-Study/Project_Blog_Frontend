@@ -3,8 +3,6 @@ import React from 'react';
 const GuestBookList = (guestBooks) => {
 
   const guestBook = guestBooks.guestBooks;
-  console.log(guestBook);
-  console.log(sessionStorage.getItem('user_id'));
 
   let create_date = new Date(guestBook.date);
 

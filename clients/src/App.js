@@ -18,12 +18,12 @@ import socket from './config/socket';
 
 function App() {
   const [isLogin, setIsLogin] = useState();
-  const nickName = sessionStorage.getItem('user_nickName');
+  const username = sessionStorage.getItem('username');
   const token = sessionStorage.getItem('token');
   const userId = parseInt(sessionStorage.getItem('user_id'));
 
   useEffect(() => {
-    if (token && userId && nickName) {
+    if (token && userId && username) {
       fetch('http://localhost:8080/log-in/check', {
         method: 'POST',
         headers: {
@@ -36,7 +36,7 @@ function App() {
         setIsLogin(res.isLogin);
         if (!socket.connected) {
           socket.connect();
-          socket.emit('reconnection', { userId, nickName },
+          socket.emit('reconnection', { userId, username },
             ({ error, user }) => {
               if (error) {
                 alert(error);
@@ -47,7 +47,7 @@ function App() {
     } else {
       setIsLogin(false);
     }
-  }, [socket, token, userId, nickName]);
+  }, [socket, token, userId, username]);
 
   // useEffect(() => {
   //   socket.emit('getUsers', (callback) => {

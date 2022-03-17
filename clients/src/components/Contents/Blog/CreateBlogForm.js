@@ -24,15 +24,11 @@ const CreateBlogForm = (props) => {
   const formData = new FormData();
 
   const onChangeFile = (e) => {
-    console.log(e.target.name + ' : ' + e.target.files[0]);
     formData.append(e.target.name, e.target.files[0]);
-    console.log(formData.get('iconImage'));
-    console.log(formData.get('logoImage'));
   };
 
   const submitCreateBlog = (e) => {
     e.preventDefault();
-    console.log(createBlog);
     fetch('http://localhost:8080/create-blog', {
       method: 'POST',
       headers: {
@@ -53,7 +49,6 @@ const CreateBlogForm = (props) => {
         })
         .then(res)
         .then(res => {
-          console.log(res);
           alert('블로그 생성을 축하합니다.');
           props.history.push('/yamoonjin.com/blog/' + createBlog.blogName);
         });

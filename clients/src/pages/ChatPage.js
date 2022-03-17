@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import ChatNavigation from '../components/Contents/Chat/ChatNavigation';
 import '../assets/css/chat.css';
 import { Route } from 'react-router-dom';
-import CreateChatForm from '../components/Contents/Chat/CreateChatForm';
 import ChatForm from '../components/Contents/Chat/ChatForm';
 
 const ChatPage = (props) => {
@@ -41,6 +40,7 @@ const ChatPage = (props) => {
     .then(res => res.json())
     .then(res => {
       setChatList(res);
+      console.log(res);
     });
   }, []);
 

@@ -9,7 +9,6 @@ const SignUpForm = (props) => {
     username: '',
     password: '',
     passwordCheck: '',
-    nickName: '',
     email: '',
     phone: '',
   });
@@ -23,7 +22,6 @@ const SignUpForm = (props) => {
 
   const submitSignUp = (e) => {
     e.preventDefault();
-    console.log(signUp);
     fetch('http://localhost:8080/sign-up', {
       method: 'POST',
       headers: {
@@ -73,13 +71,6 @@ const SignUpForm = (props) => {
             <label className='signUpInfo'>ENTER YOUR USERNAME</label>
             <br />
             <input id='username' name='username' type='text'
-                   className='signUpInput' onChange={onChangeValue} />
-            <div className='signUpUnderLine'></div>
-            <br />
-
-            <label className='signUpInfo'>ENTER YOUR NICKNAME</label>
-            <br />
-            <input id='nickName' name='nickName' type='text'
                    className='signUpInput' onChange={onChangeValue} />
             <div className='signUpUnderLine'></div>
             <br />

@@ -22,7 +22,6 @@ const GuestBooks = (blogOwnerCheck) => {
     })
     .then(res=>res.json())
     .then(res=>{
-      console.log(res);
       alert('방명록이 작성되었습니다.');
       window.location.reload();
     });

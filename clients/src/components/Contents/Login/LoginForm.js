@@ -31,24 +31,24 @@ const LoginForm = (props) => {
     .then(res => {
       if (res.responseMessage !== 'Login Fail') {
         sessionStorage.setItem('user_id', res.user.id);
-        sessionStorage.setItem('user_nickName', res.user.nickName);
         sessionStorage.setItem('token', res.token);
-        sessionStorage.setItem('blog_id', res.user.blog.id);
-        sessionStorage.setItem('blog_name', res.user.blog.blogName);
-
-        console.log(res.user.blog);
+        sessionStorage.setItem('username', res.user.username);
+        if(res.user.blog){
+          sessionStorage.setItem('blog_id', res.user.blog.id);
+          sessionStorage.setItem('blog_name', res.user.blog.blogName);
+        }
         let userId = res.user.id;
-        let nickName = res.user.nickName;
+        let username = res.user.username;
         socket.connect();
-        socket.emit('login', { userId, nickName }, ({ error, user }) => {
+        socket.emit('login', { userId, username }, ({ error, user }) => {
           if (error) {
             alert(error.error);
           } else {
             if (res.user.blog) {
-              alert(user.nickName + ' 님, 반갑습니다.');
+              alert(user.username + ' 님, 반갑습니다.');
               props.history.push('/yamoonjin.com/blog');
             } else {
-              alert(user.nickName
+              alert(user.username
                 + ' 님, 반갑습니다. 블로그를 생성해주세요.\n(블로그를 생성하지 않으면 사이트 이용에 제약이 생깁니다.)');
               props.history.push('/yamoonjin.com/blogCreate');
             }

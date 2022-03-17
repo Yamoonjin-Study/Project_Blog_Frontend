@@ -19,8 +19,6 @@ const BlogSetting_archives = () => {
     });
   },[]);
 
-  console.log(archiveList);
-
   return (
     <div>
       {

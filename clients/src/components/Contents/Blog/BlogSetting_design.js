@@ -8,10 +8,7 @@ const BlogSetting_design = (blog_info) => {
   const formData = new FormData();
 
   const onChangeFile = (e) => {
-    console.log(e.target.name + ' : ' + e.target.files[0]);
     formData.append(e.target.name, e.target.files[0]);
-    console.log(formData.get('iconImage'));
-    console.log(formData.get('logoImage'));
   };
 
   let updateBlogDesign;
@@ -59,7 +56,6 @@ const BlogSetting_design = (blog_info) => {
           })
           .then(res)
           .then(res => {
-            console.log(res);
             alert('블로그 정보가 수정되었습니다.');
             window.location.reload();
           });

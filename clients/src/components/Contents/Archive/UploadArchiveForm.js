@@ -54,7 +54,6 @@ const UploadArchiveForm = (props) => {
           })
           .then(res)
           .then(res => {
-            console.log(res);
             alert('작성되었습니다.');
             props.history.push('/yamoonjin.com/blog/"+blog_name+"/archive/list');
           });

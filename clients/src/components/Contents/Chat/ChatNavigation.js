@@ -3,6 +3,7 @@ import './ChatNavigation.css';
 import SearchImage from '../../../assets/images/search.png';
 import ChatRoom from './ChatRoom';
 import AddIcon from '../../../assets/images/add.png';
+import CloseIcon from '../../../assets/images/close.png';
 import CreateChatForm from './CreateChatForm';
 import $ from 'jquery';
 
@@ -20,6 +21,7 @@ const ChatNavigation = ({
       $('.chatSearch').css('height', '0');
       $('.createChatRoom').css('background', '#404040');
       $('.createChatRoom').css('color', 'white');
+      $('.createChatRoomIcon').attr('src', CloseIcon);
       $('.createChatRoomIcon').css('filter', 'invert(100%');
       $('.createChatForm').css('height', '100%');
       $('.chatList').css('opacity', '0');
@@ -28,6 +30,7 @@ const ChatNavigation = ({
       $('.chatSearch').css('height', '23px');
       $('.createChatRoom').css('background', 'transparent');
       $('.createChatRoom').css('color', 'black');
+      $('.createChatRoomIcon').attr('src', AddIcon);
       $('.createChatRoomIcon').css('filter', 'invert(0%');
       $('.createChatForm').css('height', '0');
       $('.chatList').css('opacity', '100%');
@@ -51,7 +54,7 @@ const ChatNavigation = ({
       <hr style={{ width: '80%', margin: '15px 10% 15px 10%' }} />
       <div className='chatSearch'>
         <img src={SearchImage} className='chatSearchButton' width='25px' />
-        <input type='text' className='chatSearchInput' placeholder='검색' />
+        <input type='text' className='chatSearchInput' placeholder='채팅방 검색' />
       </div>
       <br />
       <div className='createChatRoom' onClick={CreateChat}>
@@ -63,7 +66,7 @@ const ChatNavigation = ({
         <input type='text' value={chatVisible} readOnly={true}
                style={{ display: 'none' }} />
         <div className='createChatForm'>
-          <CreateChatForm />
+          <CreateChatForm followingList={followingList}/>
         </div>
         <div className='chatList'>
           {

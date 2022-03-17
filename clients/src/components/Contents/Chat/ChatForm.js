@@ -1,11 +1,11 @@
 import React from 'react';
-
-const CreateChatForm = () => {
+import '../../../assets/css/chat.css';
+const ChatForm = () => {
   return (
-    <div>
+    <div className='chatForm'>
       채팅
     </div>
   );
 };
 
-export default CreateChatForm;
+export default ChatForm;

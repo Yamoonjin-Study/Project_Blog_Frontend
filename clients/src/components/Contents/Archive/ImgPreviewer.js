@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ImgPreviewer = (url) => {
-  console.log(url);
+
   return (
     <div className='imgFileReader'>
       <img src={url.url}/>

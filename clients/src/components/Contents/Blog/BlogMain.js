@@ -27,11 +27,6 @@ const BlogMain = (props) => {
     });
   }, []);
 
-  const moveToBlog = (e) => {
-    e.preventDefault();
-    console.log(e.target);
-    // props.history.push('/yamoonjin.com/blog/' + e.target.value());
-  };
   return (
     <div>
       <div className='blogSection'>

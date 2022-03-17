@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const MyPageMain = (user) => {
   const user_info = user.user;
-  console.log(user_info);
 
   const withdrawal = () => {
     if (window.confirm('회원 탈퇴하시겠습니까?')) {

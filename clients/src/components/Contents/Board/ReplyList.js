@@ -73,8 +73,6 @@ const ReplyList = (replies) => {
     })
     .then(res => res.status)
     .then(res => {
-      console.log(res);
-      console.log(content);
       alert('댓글을 수정했습니다.');
       window.location.reload();
     });

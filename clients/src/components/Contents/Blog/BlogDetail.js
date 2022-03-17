@@ -10,6 +10,7 @@ import BlogBusinessCard from './BlogBusinessCard';
 import GuestBooks from '../GuestBook/GuestBooks';
 
 const BlogDetail = ({ blog, blogOwnerCheck, goMain, blogDesign }) => {
+
   return (
     <div className={blogDesign.section}>
       <img className='showBlogTitleImg' src={blog.logoImage}

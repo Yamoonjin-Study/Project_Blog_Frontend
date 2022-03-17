@@ -14,7 +14,6 @@ const WithdrawalCheck = (user) => {
       password: $('#password').val(),
       reason: $('#reason').val(),
     };
-    console.log(withdrawal);
     fetch('http://localhost:8080/withdrawal', {
       method: 'POST',
       headers: {
