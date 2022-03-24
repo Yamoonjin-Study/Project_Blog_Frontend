@@ -67,6 +67,19 @@ io.on('connection', (socket) => {
     console.log(alarmMessage);
     io.to(toUser.socketId).emit('alarm message', { alarmMessage, fromUser });
   });
+
+  //메세지가 왔을때
+  socket.on('sendChat', ({ toUsers }, callback) => {
+    callback('good');
+    let chatMessage = 'message가 왔습니다.';
+    for (let i = 0; i < toUsers.length; i++) {
+      let toUser = getUser(toUsers[i].id);
+
+      if(toUser){
+        io.to(toUser.socketId).emit('chat message', { chatMessage });
+      }
+    }
+  });
 // socket.on('join', ({ name, room }, callback) => {
 //   const { error, user } = addUser({ id: socket.id, name, room });
 //   if (error) {

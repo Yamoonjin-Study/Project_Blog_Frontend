@@ -38,10 +38,18 @@ const BoardWrite = (props) => {
     <div className='container'>
       <h4 className='mainTitle'>Write Board</h4>
       <div className='divider' id='divider'></div>
-      제목 : <input type='text' name='title' />
-      <SummerNote />
-      <Link to={'/yamoonjin.com/blog/' + blogName + '/board/list'} onClick={submitBoard}><button className='btn2 btnHover'>Summit</button></Link>
-      <Link to={'/yamoonjin.com/blog/' + blogName + '/board/list'}><button className='btn2 btnHover'>Cancel</button></Link>
+      <form>
+        제목 : <input type='text' name='title' style={{width:'70%'}}/>
+        <br/>
+        <SummerNote />
+        <Link to={'/yamoonjin.com/blog/' + blogName + '/board/list'}
+              onClick={submitBoard}>
+          <button className='btn2 btnHover'>Summit</button>
+        </Link>
+        <Link to={'/yamoonjin.com/blog/' + blogName + '/board/list'}>
+          <button className='btn2 btnHover'>Cancel</button>
+        </Link>
+      </form>
     </div>
   );
 };

@@ -72,8 +72,8 @@ const ChatNavigation = ({
           {
             chatList.length < 1
               ? <i className='chatNull'>회원들과 채팅을 나눠보세요!<br />(채팅 기록 없음.)</i>
-              : chatList.map((chat) => (
-                <ChatRoom key={chat.id} chat={chat} />
+              : chatList.map((chatRoom) => (
+                <ChatRoom key={chatRoom.id} chatRoom={chatRoom} />
               ))
           }
         </div>

@@ -3,8 +3,10 @@ import ChatNavigation from '../components/Contents/Chat/ChatNavigation';
 import '../assets/css/chat.css';
 import { Route } from 'react-router-dom';
 import ChatForm from '../components/Contents/Chat/ChatForm';
+import socket from '../config/socket';
+import $ from 'jquery';
 
-const ChatPage = (props) => {
+const ChatPage = () => {
   const blogName = sessionStorage.getItem('blog_name');
   const [blogCheck, setBlogCheck] = useState();
   const [blog, setBlog] = useState({});
@@ -41,6 +43,24 @@ const ChatPage = (props) => {
     .then(res => {
       setChatList(res);
       console.log(res);
+    });
+  }, []);
+
+  useEffect(() => {
+    socket.on('chat message', ({ chatMessage }) => {
+      console.log(chatMessage);
+      fetch('http://localhost:8080/chat-list', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+          'X-AUTH-TOKEN': sessionStorage.getItem('token'),
+        },
+      })
+      .then(res => res.json())
+      .then(res => {
+        setChatList(res);
+        console.log(res);
+      });
     });
   }, []);
 
@@ -86,13 +106,11 @@ const ChatPage = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className='chatPage'>
       <ChatNavigation blog={blog} followingList={followingList}
-                      followerList={followerList} chatList={chatList}
-                      props={props} />
-      <div className='chatSection'>
-        <Route path='/yamoonjin.com/chat/room/:roomId' component={ChatForm} />
-      </div>
+                      followerList={followerList} chatList={chatList} />
+      <Route path='/yamoonjin.com/chat/room/:roomId/:chatRoomName'
+             component={ChatForm} />
     </div>
   );
 };

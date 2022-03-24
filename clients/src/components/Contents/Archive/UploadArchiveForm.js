@@ -95,8 +95,6 @@ const UploadArchiveForm = (props) => {
         <br />
         <br />
         <SummerNote />
-        <br />
-        <br />
         <button className='btn2 btnHover' type='submit'>Submit</button>
         <Link to={'/yamoonjin.com/blog/' + blog_name
         + '/archive/list'}><button className='btn2 btnHover'>Cancel</button></Link>

@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ChatRooms.css';
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
 
-const ChatRoom = (chat, props) => {
-  const chatInfo = chat.chat;
+const ChatRoom = (chatRoom) => {
+  const chatInfo = chatRoom.chatRoom;
   const chatUsersInfo = chatInfo.chatUsers;
   const blogName = sessionStorage.getItem('blog_name');
+  let ChatRoomName = chatInfo.chatRoomName;
   let ifNoChatRoomName = '';
+  // const [readCheck, setReadCheck] = useState(true);
+
   for (let i = 0; i < chatUsersInfo.length; i++) {
     if (ifNoChatRoomName === '') {
       ifNoChatRoomName = chatUsersInfo[i].blog.blogName;
@@ -16,6 +20,27 @@ const ChatRoom = (chat, props) => {
     }
   }
 
+  // fetch('http://localhost:8080/chat-room/' + chatInfo.id, {
+  //   method: 'GET',
+  //   headers: {
+  //     'X-AUTH-TOKEN': sessionStorage.getItem('token'),
+  //   },
+  // })
+  // .then(res => res.json())
+  // .then(res => {
+  //   if (res.chatMessages[res.chatMessages.length - 1].readers[0].blog.blogName
+  //     === blogName) {
+  //     setReadCheck(true);
+  //   } else {
+  //     setReadCheck(false);
+  //   }
+  //   if (readCheck === false) {
+  //     $('.alarmDisplay').css('display', 'block');
+  //   } else {
+  //     $('.alarmDisplay').css('display', 'none');
+  //   }
+  // });
+
   if (chatUsersInfo.length > 4) {
     ifNoChatRoomName =
       ifNoChatRoomName.split(',').at(0) + ',' +
@@ -24,7 +49,18 @@ const ChatRoom = (chat, props) => {
       ifNoChatRoomName.split(',').at(3) + '...';
   }
 
-  let create_date = new Date(chatInfo.lastChatMessage);
+  if (chatUsersInfo.length < 3) {
+    for (let i = 0; i < ifNoChatRoomName.split(',').length; i++) {
+      if (ifNoChatRoomName.split(',').at(i) !== blogName) {
+        ifNoChatRoomName = ifNoChatRoomName.split(',').at(i);
+      }
+    }
+  }
+
+  if (ChatRoomName === '') {
+    ChatRoomName = ifNoChatRoomName;
+  }
+  let create_date = new Date(chatInfo.lastChatMessageDate);
 
   function dateFormat(create_date) {
     let month = create_date.getMonth() + 1;
@@ -44,8 +80,9 @@ const ChatRoom = (chat, props) => {
   }
 
   return (
-    <Link to={'/yamoonjin.com/chat/room/' + chatInfo.id}>
+    <Link to={'/yamoonjin.com/chat/room/' + chatInfo.id + '/' + ChatRoomName}>
       <div className='chatRooms'>
+        {/*<div className='alarmDisplay'></div>*/}
         <div className='chatRoomImg'>
           {
             chatUsersInfo.length > 2
@@ -66,11 +103,8 @@ const ChatRoom = (chat, props) => {
           }
         </div>
         <div className='chatRoomInfo'>
-          {
-            chatInfo.chatRoomName === ''
-              ? <span>{ifNoChatRoomName}</span>
-              : <span>{chatInfo.chatRoomName}</span>
-          }<br />
+          <span>{ChatRoomName}</span>
+          <br />
           {dateFormat(create_date)}
         </div>
       </div>
