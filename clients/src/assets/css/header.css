@@ -1,0 +1,72 @@
+.headerDiv {
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  text-align: center;
+  position: fixed;
+  z-index: 10;
+}
+
+.logoIcon {
+  height: 40px;
+  width: 40px;
+  float: left;
+}
+
+.menuIcon {
+  height: 28px;
+  width: 28px;
+  float: right;
+  transform: translateY(25%);
+  cursor: pointer;
+}
+
+.menuList {
+  margin-right: 15px;
+  opacity: 0;
+  position: relative;
+  float: right;
+  transform: translateY(10%);
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+
+.showMenu:hover, .showMenu:hover + .menuList {
+  opacity: 80%;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+  width: 100px;
+  padding: 5px 5px 5px 5px;
+  transition: all 0.2s;
+}
+
+li:hover {
+  background-color: dimgray;
+}
+
+li:hover > .listLink{
+  color: white;
+}
+
+.listLink{
+  font-weight:normal;
+  font-size:11pt;
+  text-decoration: none;
+  color: black;
+}
+
+.listLink:hover{
+  color:white;
+}
+
+.headerComponents {
+  position: absolute;
+  top: 50%;
+}

@@ -1,0 +1,143 @@
+.chatMenu {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  left: 54px;
+  text-align: center;
+  border-top: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+}
+
+.chatSearch {
+  height: 23px;
+  text-align: center;
+  overflow-y: hidden;
+  -webkit-transition: 0.3s;
+}
+
+.chatSearchButton {
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.chatSearchInput {
+  border-style: none;
+  border-bottom: #404040 solid 1px;
+}
+
+.chatRoomNameInput {
+  display: none;
+  border-style: none;
+  border-bottom: #404040 solid 1px;
+  position: absolute;
+  right: 55px;
+  -webkit-transition: 0.3s;
+}
+
+.checkedUsersDiv {
+  height: 0;
+  border-bottom: 1px solid darkgray;
+  padding-top: 6px;
+  overflow-y: hidden;
+  -webkit-transition: 0.3s;
+}
+
+.checkedUsersDiv::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+}
+
+.checkedUsersDiv::-webkit-scrollbar-thumb {
+  border-radius: 3.5px;
+  background-color: gray;
+}
+
+.checkedUsersDiv::-webkit-scrollbar-thumb:hover {
+  background-color: #404040;
+}
+
+
+.checkedUsersDiv::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+.checkedUser {
+  border: 1px solid darkgray;
+  padding: 7px 15px;
+  margin: 5px 5px;
+}
+
+.checkedUserDelete {
+  color: darkgray;
+  margin-left: 7px;
+  margin-right: -7px;
+  cursor: pointer;
+}
+
+.createChatRoomButton {
+  height: 0;
+  overflow-y: hidden;
+  position: absolute;
+  right: 92px;
+  -webkit-transition: 0.3s;
+}
+
+.chatUserList {
+  padding: 15px 20px;
+  border-bottom: 1px solid darkgray;
+}
+
+.profileIconImageDiv {
+  width: 20px;
+  height: 20px;
+  border-radius: 70%;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.chatNaviContents {
+  clear: both;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.chatList {
+  width: 100%;
+  position: relative;
+  -webkit-transition: 0.3s;
+}
+
+.createChatForm {
+  clear: both;
+  height: 0;
+  overflow-y: hidden;
+  -webkit-transition: 0.3s;
+}
+
+.chatNaviContents::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+}
+
+.chatNaviContents::-webkit-scrollbar-thumb {
+  border-radius: 3.5px;
+  background-color: gray;
+}
+
+.chatNaviContents::-webkit-scrollbar-thumb:hover {
+  background-color: #404040;
+}
+
+
+.chatNaviContents::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+
+.chatNull {
+  position: relative;
+  top: 30%;
+  font-size: 15pt;
+  color: black;
+}

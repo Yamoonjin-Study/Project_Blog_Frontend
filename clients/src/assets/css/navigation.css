@@ -1,0 +1,145 @@
+.mainNavi {
+  text-align: center;
+  position: fixed;
+  height: 100%;
+  width: 250px;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 11;
+  left: -195px;
+}
+
+.mainNavi:hover {
+  left: 0;
+  transition: 0.3s
+}
+
+.homeIcon {
+  width: 30px;
+  margin: -3px 13px 0 -13px;
+  float: right;
+  filter: invert(100%);
+}
+
+.naviIcon {
+  float: right;
+  width: 22px;
+  margin: 0 18px 0 -10px;
+  filter: invert(100%);
+}
+
+.userIcon {
+  float: right;
+  width: 23px;
+  margin: 18px 18px 0 -10px;
+  filter: invert(100%);
+}
+
+.mainNavi:hover .userIcon {
+  display: none;
+}
+
+.linkStyle {
+  display: block;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  color: white;
+  width: 100%;
+  padding: 17px 0;
+  text-decoration: none;
+  font-size: 10pt;
+  transition: all 0.2s;
+}
+
+.linkStyle:hover {
+  background: white;
+  color: black;
+  text-decoration: none;
+}
+
+.linkStyle:hover .homeIcon {
+  filter: invert(0%);
+}
+
+.linkStyle:hover .naviIcon {
+  filter: invert(0%);
+}
+
+.naviBtn {
+  margin-top: 20px;
+  background: white;
+  border: none;
+  padding: 7px 25px;
+  display: none;
+  font-size: 10pt;
+  transition: all 0.2s;
+}
+
+.naviBtn:hover {
+  background: black;
+  color: white;
+  border: 1px solid white;
+}
+
+.mainNavi:hover .naviBtn {
+  display: inline-block;
+}
+
+.alarmDisplay {
+  display: block;
+  margin-left: 93px;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: tomato;
+  z-index: 10;
+}
+
+.alarmList {
+  display: none;
+  height: 0px;
+  overflow-y: scroll;
+  -webkit-transition: 0.3s;
+}
+
+.alarm {
+  padding-top: 13px;
+  border-top: 1px solid black;
+  height: 70px;
+  cursor: pointer;
+  background: white;
+  font-size: 8pt;
+  font-weight: bold;
+}
+
+.alarm:hover {
+  background: #404040;
+  color: white;
+}
+
+.alarmNull {
+  position:relative;
+  top: 48%;
+  font-size: 15pt;
+  color: white;
+}
+
+.alarmList::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+}
+
+.alarmList::-webkit-scrollbar-thumb {
+  border-radius: 3.5px;
+  background-color: gray;
+}
+
+.alarmList::-webkit-scrollbar-thumb:hover {
+  background-color: #404040;
+}
+
+
+.alarmList::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}

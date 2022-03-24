@@ -1,0 +1,18 @@
+.myPage {
+  background-image: url("../images/main1.jpg");
+  background-size: cover;
+  height: 900px;
+}
+
+.userImage {
+  width: 60px;
+  height: 60px;
+  border: 1px solid white;
+  border-radius: 70%;
+  overflow: hidden;
+}
+
+.myPageContents {
+  padding-top:100px;
+  text-align: center;
+}
